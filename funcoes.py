@@ -20,6 +20,22 @@ def collect_data(pasta = pasta):
 print(collect_data(pasta))
 
 def filtrar_colunas(df,coluna1,coluna2):
+    """Recebe um DataFrame pandas e retorna um novo com apenas duas colunas desejadas.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame do qual se quer filtrar as colunas.
+    coluna1 : str
+        Nome da primeira coluna a compor o DataFrame filtrado.
+    coluna2 : str
+        Nome da segunda coluna a compor o DataFrame filtrado.
+
+    Returns
+    -------
+    pandas.DataFrame
+       DataFrame contendo apenas as duas colunas recebidas.
+    """
     try:
         df_filtrado = df[[coluna1, coluna2]]
     except NameError:
@@ -33,5 +49,5 @@ def filtrar_estado(df,UF):
         print("Estado não encontrado.")
     return df_estado
 
-# df = collect_data()
-# print(filtrar_estado(df,"PR")['Sigla Unidade Federativa'])
+df = collect_data()
+print(type(df))
