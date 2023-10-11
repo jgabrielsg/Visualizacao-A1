@@ -69,6 +69,9 @@ def arrumar_tipos(df):
                 print("A coluna:", coluna, ", não está presente no dataframe!\n")
                 print(type(erro), erro.__class__.mro())
 
+            except:
+                print("Erro!")
+
     return df_copia
 
 def filtrar_colunas(df, *colunas):
@@ -120,5 +123,12 @@ def filtrar_estado(df,UF):
     except Exception as erro:
         print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
 
-# df = arrumar_tipos(collect_data())
-# df_teste = filtrar_estado(df,1)
+def contar_repeticoes(df, *colunas):
+    df["QUANTIDADE"] = df.groupby(list(colunas)).size()
+    return df
+
+def valores_unicos(df, coluna):
+    lista_de_valores_unicos = []
+    for unico in df[coluna].unique():
+        lista_de_valores_unicos.append(unico)
+    return lista_de_valores_unicos

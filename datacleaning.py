@@ -35,5 +35,3 @@ def format_currency(value):
         return "${:,.2f}M".format(value)
     else:
         return 0.0
-
-print(clean_data(collect_data()))
