@@ -131,7 +131,8 @@ def filtrar_estado(df,UF):
         print("\nDados inseridos não seguem o formato desejado.")
         print(type(erro), erro.__class__.mro(), end ="\n\n")
     except Exception as erro:
-        print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
+        print("Nenhum dado encontrado para a sigla escolhida.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
 
 def contar_repeticoes(df, *colunas):
     df["QUANTIDADE"] = df.groupby(list(colunas)).size()
