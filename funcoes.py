@@ -17,7 +17,23 @@ def collect_data(pasta = pasta):
 
     return df
 
-print(collect_data(pasta))
+def arrumar_tipos(df):
+    # função que vai arrumar os dtypes das colunas
+
+    df_copia = df
+
+    colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
+
+    for coluna in colunas_datas:
+        df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+
+    return df_copia
+
+df = arrumar_tipos(collect_data(pasta))
+
+print(df["Data do Inicio"])
+print(df["Data do Inicio"].dtype)
+
 
 def filtrar_colunas(df,coluna1,coluna2):
     try:
