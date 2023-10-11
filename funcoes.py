@@ -48,7 +48,6 @@ def arrumar_tipos(df):
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
     colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
 
-    
     # Arruma os tipos das colunas de data
     for coluna in colunas_datas:
         try:
@@ -63,7 +62,8 @@ def arrumar_tipos(df):
     for coluna in colunas_dinheiro:
         try: 
             mask = df_copia[coluna].notna()
-            df_copia[coluna][mask] = df_copia[coluna][mask].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
+            df_copia[coluna][mask] = df_copia[coluna][mask].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True)
+            df_copia[coluna] = df_copia[coluna].fillna(0).astype(float)
         
         except KeyError as erro:
             print("!! ERRO !!\n")
