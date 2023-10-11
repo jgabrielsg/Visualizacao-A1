@@ -70,7 +70,7 @@ def arrumar_tipos(df):
             print("A coluna:", coluna, ", não está presente no dataframe!\n")
             print(type(erro), erro.__class__.mro())
 
-        except Exception as error:
+        except Exception as erro:
             print("!! Erro !!\n")
             print(erro)
 
