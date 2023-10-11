@@ -52,28 +52,28 @@ def arrumar_tipos(df):
 
     return df_copia
 
-def filtrar_colunas(df,coluna1,coluna2):
-    """Recebe um DataFrame pandas e retorna um novo com apenas duas colunas desejadas.
+def filtrar_colunas(df, *colunas):
+    """Recebe um DataFrame Pandas e retorna um novo com as colunas desejadas.
 
     Parameters
     ----------
     df : pandas.DataFrame
         DataFrame do qual se quer filtrar as colunas.
-    coluna1 : str
-        Nome da primeira coluna a compor o DataFrame filtrado.
-    coluna2 : str
-        Nome da segunda coluna a compor o DataFrame filtrado.
+    *colunas : str
+        Nomes das colunas a compor o DataFrame filtrado.
 
     Returns
     -------
     pandas.DataFrame
-       DataFrame contendo apenas as duas colunas recebidas.
+       DataFrame contendo apenas as colunas recebidas.
     """
     try:
-        df_filtrado = df[[coluna1, coluna2]]
-    except NameError:
-        print("Coluna não encontrada.")
-    return df_filtrado
+        df_filtrado = df[list(colunas)]
+        return df_filtrado
+    except KeyError as erro:
+        print(f"Coluna não encontrada: {erro}")
+    
+    
 
 def filtrar_estado(df,UF):
     """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
@@ -92,9 +92,11 @@ def filtrar_estado(df,UF):
     """
     try:
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
-    except NameError:
-        print("Estado não encontrado.")
-    return df_estado
+        if df_estado.empty:
+            raise ValueError
+        return df_estado
+    except ValueError as erro:
+        print(f"Nenhum dado encontrado para a sigla escolhida: {erro}")
 
-df_teste = arrumar_tipos(collect_data(pasta))
-print(type(df_teste))
+# df = collect_data()
+# df_teste = filtrar_colunas(df,"Data da Deflagracao",'Data do Inicia')
