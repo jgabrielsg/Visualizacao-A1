@@ -18,7 +18,18 @@ def collect_data(pasta = pasta):
     return df
 
 def arrumar_tipos(df):
-    # função que vai arrumar os dtypes das colunas
+    """Funcao que retorna um dataframe com os tipos de dados das colunas adequados.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame inicial com os dados lidos.
+
+    Returns
+    -------
+    pandas.DataFrame
+       DataFrame com
+    """
 
     df_copia = df
 
@@ -28,12 +39,6 @@ def arrumar_tipos(df):
         df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
 
     return df_copia
-
-df = arrumar_tipos(collect_data(pasta))
-
-print(df["Data do Inicio"])
-print(df["Data do Inicio"].dtype)
-
 
 def filtrar_colunas(df,coluna1,coluna2):
     """Recebe um DataFrame pandas e retorna um novo com apenas duas colunas desejadas.
@@ -79,5 +84,5 @@ def filtrar_estado(df,UF):
         print("Estado não encontrado.")
     return df_estado
 
-df = collect_data()
-print(type(df))
+df_teste = arrumar_tipos(collect_data(pasta))
+print(type(df_teste))
