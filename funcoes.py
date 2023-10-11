@@ -36,6 +36,22 @@ print(df["Data do Inicio"].dtype)
 
 
 def filtrar_colunas(df,coluna1,coluna2):
+    """Recebe um DataFrame pandas e retorna um novo com apenas duas colunas desejadas.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame do qual se quer filtrar as colunas.
+    coluna1 : str
+        Nome da primeira coluna a compor o DataFrame filtrado.
+    coluna2 : str
+        Nome da segunda coluna a compor o DataFrame filtrado.
+
+    Returns
+    -------
+    pandas.DataFrame
+       DataFrame contendo apenas as duas colunas recebidas.
+    """
     try:
         df_filtrado = df[[coluna1, coluna2]]
     except NameError:
@@ -43,11 +59,25 @@ def filtrar_colunas(df,coluna1,coluna2):
     return df_filtrado
 
 def filtrar_estado(df,UF):
+    """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame do qual se quer filtrar as colunas.
+    UF : str
+        Sigla do estado do qual se deseja isolar os dados.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame composto apenas pelo estado escolhido.
+    """
     try:
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
     except NameError:
         print("Estado não encontrado.")
     return df_estado
 
-# df = collect_data()
-# print(filtrar_estado(df,"PR")['Sigla Unidade Federativa'])
+df = collect_data()
+print(type(df))
