@@ -92,8 +92,13 @@ def filtrar_colunas(df, *colunas):
     try:
         df_filtrado = df[list(colunas)]
         return df_filtrado
+    
     except KeyError as erro:
-        print(f"Coluna não encontrada: {erro}")
+        print("Coluna não encontrada.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
+    except Exception as erro:
+        print("Erro ao rodar a função.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
     
 
 def filtrar_estado(df,UF):
@@ -114,14 +119,20 @@ def filtrar_estado(df,UF):
     try:
         if type(UF) != str:
             raise KeyError
+        
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
+
         if df_estado.empty:
             raise Exception
+        
         return df_estado
+    
     except KeyError as erro:
-        print(f"Dados inseridos não seguem o formato desejado. {erro}")
+        print("\nDados inseridos não seguem o formato desejado.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
     except Exception as erro:
-        print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
+        print("Nenhum dado encontrado para a sigla escolhida.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
 
 def contar_repeticoes(df, *colunas):
     repeticoes = df.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
