@@ -59,9 +59,10 @@ def filtrar_colunas(df,coluna1,coluna2):
     """
     try:
         df_filtrado = df[[coluna1, coluna2]]
-    except NameError:
+        return df_filtrado
+    except KeyError:
         print("Coluna não encontrada.")
-    return df_filtrado
+    
 
 def filtrar_estado(df,UF):
     """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
@@ -80,9 +81,11 @@ def filtrar_estado(df,UF):
     """
     try:
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
-    except NameError:
-        print("Estado não encontrado.")
-    return df_estado
+        if df_estado.empty:
+            raise ValueError
+        return df_estado
+    except ValueError:
+        print("Nenhum dado encontrado para a sigla escolhida.")
 
-df_teste = arrumar_tipos(collect_data(pasta))
-print(type(df_teste))
+df = collect_data()
+df_teste = filtrar_colunas(df,"Data da Deflagracao",'Data do Inicia')
