@@ -1,6 +1,10 @@
 Funções
 ----------------
 
-``filtrar_estado()``:
+.. autofunction:: funcoes.collect_data
 
-.. autofunction:: funcoes.filtrar_estado(df,UF)
+.. autofunction:: funcoes.arrumar_tipos
+
+.. autofunction:: funcoes.filtrar_colunas
+
+.. autofunction:: funcoes.filtrar_estado

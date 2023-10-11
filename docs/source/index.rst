@@ -16,6 +16,4 @@ Contents
 --------
 
 .. toctree::
-
    funcoes
-   

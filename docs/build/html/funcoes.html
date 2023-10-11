@@ -33,7 +33,80 @@
             
   <section id="funcoes">
 <h1>Funções<a class="headerlink" href="#funcoes" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">filtrar_estado()</span></code>:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.collect_data">
+<span class="sig-prename descclassname"><span class="pre">funcoes.</span></span><span class="sig-name descname"><span class="pre">collect_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pasta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dados'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcoes.collect_data" title="Link to this definition">¶</a></dt>
+<dd><p>Coleta os dados do CSV e une eles em apenas um dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pasta</strong> (<em>_type_</em><em>, </em><em>optional</em>) – A pasta que contém os CSVs, by default pasta</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>O dataframe com os dados dos CSVs</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.arrumar_tipos">
+<span class="sig-prename descclassname"><span class="pre">funcoes.</span></span><span class="sig-name descname"><span class="pre">arrumar_tipos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcoes.arrumar_tipos" title="Link to this definition">¶</a></dt>
+<dd><p>Funcao que retorna um dataframe com os tipos de dados das colunas adequados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame inicial com os dados lidos.</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.filtrar_colunas">
+<span class="sig-prename descclassname"><span class="pre">funcoes.</span></span><span class="sig-name descname"><span class="pre">filtrar_colunas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">colunas</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcoes.filtrar_colunas" title="Link to this definition">¶</a></dt>
+<dd><p>Recebe um DataFrame Pandas e retorna um novo com as colunas desejadas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame do qual se quer filtrar as colunas.</p></li>
+<li><p><strong>*colunas</strong> (<em>str</em>) – Nomes das colunas a compor o DataFrame filtrado.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame contendo apenas as colunas recebidas.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.filtrar_estado">
+<span class="sig-prename descclassname"><span class="pre">funcoes.</span></span><span class="sig-name descname"><span class="pre">filtrar_estado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UF</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcoes.filtrar_estado" title="Link to this definition">¶</a></dt>
+<dd><p>Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame do qual se quer filtrar as colunas.</p></li>
+<li><p><strong>UF</strong> (<em>str</em>) – Sigla do estado do qual se deseja isolar os dados.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame composto apenas pelo estado escolhido.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
@@ -54,7 +127,13 @@
 
 <h3>Navegação</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Funções</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Funções</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes.collect_data"><code class="docutils literal notranslate"><span class="pre">collect_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes.arrumar_tipos"><code class="docutils literal notranslate"><span class="pre">arrumar_tipos()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes.filtrar_colunas"><code class="docutils literal notranslate"><span class="pre">filtrar_colunas()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes.filtrar_estado"><code class="docutils literal notranslate"><span class="pre">filtrar_estado()</span></code></a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
