@@ -61,7 +61,6 @@ def filtrar_colunas(df, *colunas):
     except KeyError as erro:
         print(f"Coluna não encontrada: {erro}")
     
-    
 
 def filtrar_estado(df,UF):
     """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
@@ -79,12 +78,16 @@ def filtrar_estado(df,UF):
         DataFrame composto apenas pelo estado escolhido.
     """
     try:
+        if type(UF) != str:
+            raise KeyError
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
         if df_estado.empty:
-            raise ValueError
+            raise Exception
         return df_estado
-    except ValueError as erro:
-        print(f"Nenhum dado encontrado para a sigla escolhida: {erro}")
+    except KeyError as erro:
+        print(f"Dados inseridos não seguem o formato desejado. {erro}")
+    except Exception as erro:
+        print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
 
-# df = collect_data()
-# df_teste = filtrar_colunas(df,"Data da Deflagracao",'Data do Inicia')
+df = collect_data()
+df_teste = filtrar_estado(df,1)
