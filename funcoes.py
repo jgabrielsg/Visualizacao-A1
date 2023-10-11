@@ -33,10 +33,20 @@ def arrumar_tipos(df):
 
     df_copia = df
 
+    # Arruma os tipos das colunas de data
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
 
     for coluna in colunas_datas:
         df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+
+    # Arruma os tipos das colunas de valores monetários, funciona mas vou tentar melhorar dps
+    colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Apreendidos i11", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
+
+    for coluna in colunas_dinheiro:
+        df_copia[coluna] = df_copia[coluna].fillna(0).astype(str)
+        mascara = df_copia[coluna].notnull()
+        df_copia.loc[mascara, coluna] = df_copia.loc[mascara, coluna].str.replace('R\$', '').str.replace('.', '').str.replace(',', '.')
+        df_copia[coluna] = df_copia[coluna].astype(float).astype(int)
 
     return df_copia
 
@@ -85,4 +95,4 @@ def filtrar_estado(df,UF):
     return df_estado
 
 df_teste = arrumar_tipos(collect_data(pasta))
-print(type(df_teste))
+print(df_teste["Qtd Valores Apreendidos"]) 
