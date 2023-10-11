@@ -18,7 +18,7 @@ def clean_data(df):
     # Remove colunas vazias 
     df.dropna(axis=1, how='all', inplace=True)
 
-    arrumar_tipos(df)
+    df = arrumar_tipos(df)
 
     # df['Qtd Valores Apreendidos'] = df['Qtd Valores Apreendidos'].apply(format_currency)
     # df['Qtd Valores Descapitalizados'] = df['Qtd Valores Descapitalizados'].apply(format_currency)
