@@ -124,7 +124,8 @@ def filtrar_estado(df,UF):
         print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
 
 def contar_repeticoes(df, *colunas):
-    df["QUANTIDADE"] = df.groupby(list(colunas)).size()
+    repeticoes = df.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
+    df = df.merge(repeticoes, on = list(colunas), how = "left")
     return df
 
 def valores_unicos(df, coluna):
