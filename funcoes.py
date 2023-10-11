@@ -59,15 +59,20 @@ def arrumar_tipos(df):
             print("A coluna:", coluna, ", não está presente no dataframe!\n")
             print(type(erro), erro.__class__.mro())
 
-        # Arruma os tipos das colunas de valores monetários
-        for coluna in colunas_dinheiro:
-            try: 
-                df_copia[coluna] = df_copia[coluna].astype(str).str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
-            
-            except KeyError as erro:
-                print("!! ERRO !!\n")
-                print("A coluna:", coluna, ", não está presente no dataframe!\n")
-                print(type(erro), erro.__class__.mro())
+    # Arruma os tipos das colunas de valores monetários
+    for coluna in colunas_dinheiro:
+        try: 
+            mask = df_copia[coluna].notna()
+            df_copia[coluna][mask] = df_copia[coluna][mask].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
+        
+        except KeyError as erro:
+            print("!! ERRO !!\n")
+            print("A coluna:", coluna, ", não está presente no dataframe!\n")
+            print(type(erro), erro.__class__.mro())
+
+        except Exception as error:
+            print("!! Erro !!\n")
+            print(erro)
 
     return df_copia
 
@@ -121,4 +126,4 @@ def filtrar_estado(df,UF):
         print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
 
 # df = arrumar_tipos(collect_data())
-# df_teste = filtrar_estado(df,1)
+# print(df["Qtd Valores Apreendidos"])
