@@ -46,9 +46,21 @@ def arrumar_tipos(df):
     df_copia = df
 
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
+    colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
 
-    for coluna in colunas_datas:
-        df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+    try:
+        # Arruma os tipos das colunas de data
+        for coluna in colunas_datas:
+            df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+
+        # Arruma os tipos das colunas de valores monetários
+        for coluna in colunas_dinheiro:
+            df_copia[coluna] = df_copia[coluna].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
+
+    except KeyError as erro:
+        print("!! ERRO !!\n")
+        print("A coluna:", coluna, ", não está presente no dataframe!\n")
+        print(type(erro), erro.__class__.mro())
 
     return df_copia
 
@@ -73,7 +85,6 @@ def filtrar_colunas(df, *colunas):
     except KeyError as erro:
         print(f"Coluna não encontrada: {erro}")
     
-    
 
 def filtrar_estado(df,UF):
     """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
@@ -91,12 +102,16 @@ def filtrar_estado(df,UF):
         DataFrame composto apenas pelo estado escolhido.
     """
     try:
+        if type(UF) != str:
+            raise KeyError
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
         if df_estado.empty:
-            raise ValueError
+            raise Exception
         return df_estado
-    except ValueError as erro:
-        print(f"Nenhum dado encontrado para a sigla escolhida: {erro}")
+    except KeyError as erro:
+        print(f"Dados inseridos não seguem o formato desejado. {erro}")
+    except Exception as erro:
+        print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
 
-# df = collect_data()
-# df_teste = filtrar_colunas(df,"Data da Deflagracao",'Data do Inicia')
+df = arrumar_tipos(collect_data())
+# df_teste = filtrar_estado(df,1)
