@@ -1,5 +1,5 @@
 import pandas as pd
-from funcoes import collect_data
+from funcoes import collect_data, arrumar_tipos
 
 pd.set_option('display.max_columns', None)
 
@@ -18,7 +18,7 @@ def clean_data(df):
     # Remove colunas vazias 
     df.dropna(axis=1, how='all', inplace=True)
 
-    df['Qtd Valores Apreendidos'] = df['Qtd Valores Apreendidos'].str.replace('R\$', '').str.replace('.', '').str.replace(',', '.').astype(float)
+    arrumar_tipos(df)
 
     return df
 
