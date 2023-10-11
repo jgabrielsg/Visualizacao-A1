@@ -43,6 +43,20 @@ def filtrar_colunas(df,coluna1,coluna2):
     return df_filtrado
 
 def filtrar_estado(df,UF):
+    """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame do qual se quer filtrar as colunas.
+    UF : str
+        Sigla do estado do qual se deseja isolar os dados.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame composto apenas pelo estado escolhido.
+    """
     try:
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
     except NameError:
