@@ -56,19 +56,11 @@ def filtrar_colunas(df, *colunas):
        DataFrame contendo apenas as colunas recebidas.
     """
     try:
-<<<<<<< HEAD
         df_filtrado = df[list(colunas)]
     except KeyError as e:
         print(f"Coluna não encontrada: {e}")
         df_filtrado = None
     return df_filtrado
-=======
-        df_filtrado = df[[coluna1, coluna2]]
-        return df_filtrado
-    except KeyError:
-        print("Coluna não encontrada.")
-    
->>>>>>> 7f8ef942368347ee10473c443433f4b9a28e41b8
 
 def filtrar_estado(df,UF):
     """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
