@@ -19,7 +19,6 @@ def clean_data(df):
     df.dropna(axis=1, how='all', inplace=True)
 
     df['Qtd Valores Apreendidos'] = df['Qtd Valores Apreendidos'].str.replace('R\$', '').str.replace('.', '').str.replace(',', '.').astype(float)
-    df['Qtd Valores Apreendidos'] = df['Qtd Valores Apreendidos'].map('${:,.2f}'.format)
 
     return df
 

@@ -4,6 +4,18 @@ import os
 pasta = 'dados'
 
 def collect_data(pasta = pasta):
+    """Coleta os dados do CSV e une eles em apenas um dataframe
+
+    Parameters
+    ----------
+    pasta : _type_, optional
+        A pasta que contém os CSVs, by default pasta
+
+    Returns
+    -------
+    pandas.Dataframe
+        O dataframe com os dados dos CSVs
+    """
     arquivos_csv = [arquivo for arquivo in os.listdir(pasta) if arquivo.endswith('.csv')]
 
     dataframes = []
