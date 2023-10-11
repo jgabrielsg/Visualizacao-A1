@@ -40,7 +40,7 @@ def arrumar_tipos(df):
     Returns
     -------
     pandas.DataFrame
-       DataFrame com
+       DataFrame
     """
 
     df_copia = df
@@ -48,19 +48,26 @@ def arrumar_tipos(df):
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
     colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
 
-    try:
-        # Arruma os tipos das colunas de data
-        for coluna in colunas_datas:
+    
+    # Arruma os tipos das colunas de data
+    for coluna in colunas_datas:
+        try:
             df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+
+        except KeyError as erro:
+            print("!! ERRO !!\n")
+            print("A coluna:", coluna, ", não está presente no dataframe!\n")
+            print(type(erro), erro.__class__.mro())
 
         # Arruma os tipos das colunas de valores monetários
         for coluna in colunas_dinheiro:
-            df_copia[coluna] = df_copia[coluna].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
-
-    except KeyError as erro:
-        print("!! ERRO !!\n")
-        print("A coluna:", coluna, ", não está presente no dataframe!\n")
-        print(type(erro), erro.__class__.mro())
+            try: 
+                df_copia[coluna] = df_copia[coluna].astype(str).str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
+            
+            except KeyError as erro:
+                print("!! ERRO !!\n")
+                print("A coluna:", coluna, ", não está presente no dataframe!\n")
+                print(type(erro), erro.__class__.mro())
 
     return df_copia
 
