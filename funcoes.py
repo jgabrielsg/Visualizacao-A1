@@ -40,27 +40,26 @@ def arrumar_tipos(df):
 
     return df_copia
 
-def filtrar_colunas(df,coluna1,coluna2):
-    """Recebe um DataFrame pandas e retorna um novo com apenas duas colunas desejadas.
+def filtrar_colunas(df, *colunas):
+    """Recebe um DataFrame Pandas e retorna um novo com as colunas desejadas.
 
     Parameters
     ----------
     df : pandas.DataFrame
         DataFrame do qual se quer filtrar as colunas.
-    coluna1 : str
-        Nome da primeira coluna a compor o DataFrame filtrado.
-    coluna2 : str
-        Nome da segunda coluna a compor o DataFrame filtrado.
+    *colunas : str
+        Nomes das colunas a compor o DataFrame filtrado.
 
     Returns
     -------
     pandas.DataFrame
-       DataFrame contendo apenas as duas colunas recebidas.
+       DataFrame contendo apenas as colunas recebidas.
     """
     try:
-        df_filtrado = df[[coluna1, coluna2]]
-    except NameError:
-        print("Coluna não encontrada.")
+        df_filtrado = df[list(colunas)]
+    except KeyError as e:
+        print(f"Coluna não encontrada: {e}")
+        df_filtrado = None
     return df_filtrado
 
 def filtrar_estado(df,UF):
