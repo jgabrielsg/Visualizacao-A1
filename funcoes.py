@@ -18,3 +18,10 @@ def collect_data(pasta = pasta):
     return df
 
 print(collect_data(pasta))
+
+def filtrar_colunas(df,coluna1,coluna2):
+    try:
+        df_filtrado = df[[coluna1, coluna2]]
+    except NameError:
+        print("Coluna não encontrada.")
+    return df_filtrado
