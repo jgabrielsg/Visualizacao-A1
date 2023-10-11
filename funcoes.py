@@ -111,5 +111,5 @@ def filtrar_estado(df,UF):
     except Exception as erro:
         print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
 
-df = collect_data()
+df = arrumar_tipos(collect_data())
 df_teste = filtrar_estado(df,1)
