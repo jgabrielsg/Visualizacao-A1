@@ -25,3 +25,13 @@ def filtrar_colunas(df,coluna1,coluna2):
     except NameError:
         print("Coluna não encontrada.")
     return df_filtrado
+
+def filtrar_estado(df,UF):
+    try:
+        df_estado = df[df['Sigla Unidade Federativa'] == UF]
+    except NameError:
+        print("Estado não encontrado.")
+    return df_estado
+
+# df = collect_data()
+# print(filtrar_estado(df,"PR")['Sigla Unidade Federativa'])
