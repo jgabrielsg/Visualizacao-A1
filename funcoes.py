@@ -48,13 +48,19 @@ def arrumar_tipos(df):
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
     colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
 
-    # Arruma os tipos das colunas de data
-    for coluna in colunas_datas:
-        df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+    try:
+        # Arruma os tipos das colunas de data
+        for coluna in colunas_datas:
+            df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
 
-    # Arruma os tipos das colunas de valores monetários
-    for coluna in colunas_dinheiro:
-        df_copia[coluna] = df_copia[coluna].str.replace('R\$', '').str.replace('.', '').str.replace(',', '.').astype(float)
+        # Arruma os tipos das colunas de valores monetários
+        for coluna in colunas_dinheiro:
+            df_copia[coluna] = df_copia[coluna].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
+
+    except KeyError as erro:
+        print("!! ERRO !!\n")
+        print("A coluna:", coluna, ", não está presente no dataframe!\n")
+        print(type(erro), erro.__class__.mro())
 
     return df_copia
 
@@ -108,4 +114,4 @@ def filtrar_estado(df,UF):
         print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
 
 df = arrumar_tipos(collect_data())
-df_teste = filtrar_estado(df,1)
+# df_teste = filtrar_estado(df,1)
