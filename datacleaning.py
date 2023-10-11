@@ -20,8 +20,20 @@ def clean_data(df):
 
     arrumar_tipos(df)
 
+    # df['Qtd Valores Apreendidos'] = df['Qtd Valores Apreendidos'].apply(format_currency)
+    # df['Qtd Valores Descapitalizados'] = df['Qtd Valores Descapitalizados'].apply(format_currency)
+    # df['Qtd Prejuizos Causados a Uniao'] = df['Qtd Prejuizos Causados a Uniao'].apply(format_currency)
+
     return df
 
-old_df = collect_data()
+# old_df = collect_data()
+# print(clean_data(old_df))
 
-print(clean_data(old_df))
+def format_currency(value):
+    if pd.notna(value):
+        value = value/1000000
+        return "${:,.2f}M".format(value)
+    else:
+        return 0.0
+
+print(clean_data(collect_data()))
