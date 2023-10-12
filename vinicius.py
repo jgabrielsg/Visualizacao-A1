@@ -32,7 +32,7 @@ for num, barra in enumerate(barras):
         plt.text(largura + 10, barra.get_y() + barra.get_height() / 2, f"{porcentagem:.2f}%", ha = "left",
                  va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing = 0.9)
     else:
-        plt.text(largura / 2, barra.get_y() + barra.get_height() / 2, f"{porcentagem:.2f}%", ha = "center",
+        plt.text(largura, barra.get_y() + barra.get_height() / 2, f"{porcentagem:.2f}%", ha = "center",
                  va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing = 0.9)
 
 # Legenda
