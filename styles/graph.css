@@ -1,0 +1,22 @@
+
+.inicial_graph {
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('../images/minimalist.webp'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.inicial_graph h2 {
+    font-size: 46px;
+    color: #fff
+}
+
+.explic_graph img {
+    margin:0
+}
+
