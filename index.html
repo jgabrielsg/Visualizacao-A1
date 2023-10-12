@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meu Site</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Visualização de LP</h1>
+    <nav>
+        <ul>
+          <li><a href="#">Página Inicial</a></li>
+          <li><a href="#">João</a></li>
+          <li><a href="#">Gustavo</a></li>
+          <li><a href="#">Vinicius</a></li>
+          <li><a href="#">Guilherme</a></li>
+        </ul>
+      </nav>
+  </header>
+  
+  <main class="content">
+    <div class="inicial">
+        <h2>Trabalho</h2>
+        <h3>Gráficos de cada um</h3>
+    </div>
+
+    <div class="explic">
+        <h2>
+            Metodologia
+        </h2>
+
+        <hr/>
+
+        <p class="texto_explic">
+            Utiizando a plataforma do governo Portal de Dados Abertos, conseguimos baixar dados do governo para fazer uma análise deles,
+            com gráficos e visuzalizações. O banco de dados escolhido pelo nosso time foi o banco de dados que contém informações sobre
+            operações policiais, contendo, por exemplo, os valores apreendidos das operações, aonde elas foram feitas, se a operação foi
+            feita em fronteira, em terra indígena, etc. Com ela baixada, nosso primeiro passo foi juntar os dados utilizando a biblioteca
+            Pandas do python e começar a trabalhar os dados para nossas visualizações.
+        </p>
+        <p class="texto_explic">
+            Porém, antes de produzir os gráficos, tivemos que fazer a limpeza dos dados, também feita pelo Pandas. Retiramos certas colunas
+            que não utilizariamos, removemos linhas e colunas vazias, alteramos os tipos (como datas para pd.datetime e alguns valores que 
+            estavam como string para int ou float) e, com isso, começamos a fazer as visuzalizações através do Matplotlib. Cada integrante foi
+            resposável por uma visualização, e clicando nos links do header é possível ver a página de cada um.
+        </p>
+        
+        <div class="container_explic">
+            <p class="texto_explic_2">
+                Ademais, no nosso código, como demandado no trabalho, fizemos testes unitários para garantir o funcionamento do programa, docstrings
+                em todas funções, com explicações úteis de seu funcionamento, tratamento de exceções, divisões em módulos e mais. Com isso tudo, 
+                também fizemos, utilizando da biblioteca Sphinx, uma documentação para nosso código.
+                <br/>
+                <br/>
+                <br/>
+                Com as visualizações prontas e suas imagens salvas, criamos esse site para poder salvar e colocar elas aqui, separadas por pessoas, 
+                para poder-se ver o gráfico de cada um, fazendo-se mais
+                fácil de compartilhá-las e de enviar o trabalho, além de deixar mais bonito. Aqui ao lado temos os integrantes do grupo fazendo 
+                o código no hotel argentina.
+            </p>
+            
+                <img src="nós.jpg" alt="nós". height="500", width="500">
+            
+        </div>
+    </div>
+
+    <div class="image_division"></div>
+
+    <div class="explic">
+        <h2>
+            Resultado final
+        </h2>
+
+        <hr/>
+
+        <p class="texto_explic">
+            Observe os gráficos clicando nos links do header, onde será enviado para a página de cada um. O link do Github dos usuários e
+            do repositório com o trabalho estão logo abaixo:
+        </p>
+
+        <ul>
+            <li><a href="#">Página Inicial</a></li>
+            <li><a href="#">João</a></li>
+            <li><a href="#">Gustavo</a></li>
+            <li><a href="#">Vinicius</a></li>
+            <li><a href="#">Guilherme</a></li>
+          </ul>
+
+        <div class="container_explic_2">
+           <img src="nós.jpg" alt="nós". height="500", width="500">
+            
+            <img src="nós.jpg" alt="nós". height="500", width="500">
+        </div>
+    </div>
+
+
+  </main>
+</body>
+</html>
