@@ -15,6 +15,14 @@ def collect_data(pasta = pasta):
     -------
     pandas.Dataframe
         O dataframe com os dados dos CSVs
+
+    Example
+    -------
+    >>> df = collect_data('dados')
+    >>> df.shape[1]
+    27
+    >>> df.shape[0]
+    10268
     """
     arquivos_csv = [arquivo for arquivo in os.listdir(pasta) if arquivo.endswith('.csv')]
 
