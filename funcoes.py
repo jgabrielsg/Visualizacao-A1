@@ -48,7 +48,7 @@ def arrumar_tipos(df):
     Returns
     -------
     pandas.DataFrame
-       DataFrame
+       DataFrame com os tipos corrigidos
     """
 
     df_copia = df
@@ -99,6 +99,13 @@ def filtrar_colunas(df, *colunas):
     -------
     pandas.DataFrame
        DataFrame contendo apenas as colunas recebidas.
+
+       
+    Example
+    -------
+    >>> df_filtrado = filtrar_colunas(collect_data(), "Atuacao em Territorio de Fronteira")
+    >>> df_filtrado.shape[1]
+    1
     """
     try:
         df_filtrado = df[list(colunas)]
@@ -125,6 +132,12 @@ def filtrar_estado(df,UF):
     -------
     pandas.DataFrame
         DataFrame composto apenas pelo estado escolhido.
+
+    Example
+    -------
+    >>> df_filtrado = filtrar_estado(collect_data(), "RS")
+    >>> df_filtrado.shape[1]
+    809
     """
     try:
         if type(UF) != str:
@@ -159,6 +172,11 @@ def contar_repeticoes(df, *colunas):
     -------
     pandas.DataFrame
         DataFrame original com uma coluna adicional "QUANTIDADE" indicando o número de repetições.
+    
+    Example
+    -------
+    
+    
     """
     try:
         repeticoes = df.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
