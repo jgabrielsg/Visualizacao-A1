@@ -7,8 +7,8 @@ from funcoes import collect_data, filtrar_colunas, contar_repeticoes
 df_estados = filtrar_colunas(collect_data(), "Sigla Unidade Federativa")
 df_estados["Sigla Unidade Federativa"] = df_estados["Sigla Unidade Federativa"].str.strip()
 df_estados = contar_repeticoes(df_estados, "Sigla Unidade Federativa")
-df_estados = df_estados.drop_duplicates(subset = ["Sigla Unidade Federativa"], keep = "first")
-df_estados = df_estados.set_index("Sigla Unidade Federativa").rename_axis(index = "ESTADOS").sort_values("QUANTIDADE", ascending=True)
+df_estados = df_estados.rename_axis(index = "ESTADOS")
+print(df_estados)
 
 # Plotagem do gráfico
 regioes_cores = {"Norte": (["AC", "AM", "AP", "PA", "RO", "RR", "TO"], "green"),

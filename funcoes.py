@@ -163,6 +163,8 @@ def contar_repeticoes(df, *colunas):
     try:
         repeticoes = df.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
         df = df.merge(repeticoes, on = list(colunas), how = "left")
+        df = df.drop_duplicates(subset = list(colunas), keep = "first")
+        df = df.set_index(list(colunas)).sort_values("QUANTIDADE", ascending=True)
         return df
     
     except KeyError as erro:
