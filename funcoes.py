@@ -70,9 +70,9 @@ def arrumar_tipos(df):
     # Arruma os tipos das colunas de valores monetários
     for coluna in colunas_dinheiro:
         try: 
-            mask = df_copia[coluna].notna()
-            df_copia.loc[mask, coluna] = df_copia.loc[mask, coluna].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True)
-            df_copia[coluna] = df_copia[coluna].fillna(0).astype(float)
+            mask = df[coluna].notna()
+            df.loc[mask, coluna] = df.loc[mask, coluna].str.replace('R$', '', regex=False).str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
+            df[coluna] = df[coluna].fillna(0).astype(float)
         
         except KeyError as erro:
             print("!! ERRO !!\n")

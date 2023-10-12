@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from funcoes import collect_data, arrumar_tipos, filtrar_colunas, contar_repeticoes
 from datacleaning import clean_data
 
+
 df = clean_data(collect_data())
-df = arrumar_tipos(df)
 df_copia = filtrar_colunas(df, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()
 
 # df_area_ind = df[df['Atuacao em Territorio Indigena'] == "Sim"]
