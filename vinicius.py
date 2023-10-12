@@ -17,7 +17,7 @@ regioes_cores = {"Norte": (["AC", "AM", "AP", "PA", "RO", "RR", "TO"], "green"),
                  "Sudeste": (["ES", "MG", "RJ", "SP"], "yellow"),
                  "Sul": (["PR", "RS", "SC"], "purple")}
 
-barras = plt.barh(df_estados.index, df_estados["QUANTIDADE"])
+barras = plt.barh(df_estados.index, df_estados["QUANTIDADE"], height = 0.4)
 total_soma = df_estados["QUANTIDADE"].sum()
 
 for num, barra in enumerate(barras):
@@ -27,9 +27,13 @@ for num, barra in enumerate(barras):
             barra.set_color(cor)
 
     largura = barra.get_width()
-    percentage = (largura / total_soma) * 100
-    plt.text(largura, barra.get_y() + barra.get_height() / 2, f"{percentage:.2f}%", ha = "left", 
-             va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing=0.9)
+    porcentagem = (largura / total_soma) * 100
+    if porcentagem < 10:
+        plt.text(largura + 10, barra.get_y() + barra.get_height() / 2, f"{porcentagem:.2f}%", ha = "left",
+                 va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing = 0.9)
+    else:
+        plt.text(largura / 2, barra.get_y() + barra.get_height() / 2, f"{porcentagem:.2f}%", ha = "center",
+                 va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing = 0.9)
 
 # Legenda
 for regiao, (siglas, cor) in regioes_cores.items():
