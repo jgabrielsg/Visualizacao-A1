@@ -49,7 +49,7 @@ nav li a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url('images/a1pinho.jpg'); 
+    background-image: url('../images/a1pinho.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat;
 }
@@ -130,7 +130,7 @@ nav li a {
   
   .image_division::before {
     content: "";
-    background-image: url('images/fgv_AI.jpg'); 
+    background-image: url('../images/fgv_AI.jpg'); 
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -148,12 +148,17 @@ nav li a {
   .botao_git {
     display: flex;
     justify-content: center;
-    font-size: 18px;
+    font-size: 24px;
     background-color: #4F2B0E;
     border-radius: 25px;
     color: #E1DFDB;
     transition: transform 0.1s;
     padding: 10% 300%;
+}
+
+.botao_git a {
+    color:#fff;
+    text-decoration:none;
 }
 
 .botao_git:hover {
@@ -184,25 +189,3 @@ footer p {
 }
 
 /* JOAO.HTML */
-
-.inicial_graph {
-    height: 15vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-image: url('images/minimalist.webp'); 
-    background-size: cover; 
-    background-repeat: no-repeat;
-}
-
-.inicial_graph h2 {
-    font-size: 46px;
-    color: #fff
-}
-
-.explic_graph img {
-    margin:0
-}
-
