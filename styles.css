@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #000000;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    height: 15vh;
+    padding: 5px 30px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  header h1 {
+    font-size: 40px;
+  }
+  
+  nav {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 12px;
+  }
+  
+nav ul {
+    align-items: center;
+	list-style: none;
+	display: flex;
+	gap: 20px;
+}
+
+nav li a {
+    color: #fff;
+	font-size: 15px;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.inicial {
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('a1pinho.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.inicial h2 {
+    font-size: 60px;
+    margin-bottom: -0.5%;
+}
+
+.inicial h3 {
+    font-size: 42px;
+    font-weight: 300;
+
+}
+
+.explic {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0% 0;
+    padding-bottom: 3%;
+    background-color:antiquewhite;
+}
+
+.explic>h2 {
+    text-align: center;
+    font-size: 56px;
+    font-weight: bold;
+    color: #4F2B0E;
+}
+
+.explic hr {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #4F2B0E;
+    border: 1px solid #4F2B0E;
+}
+
+.explic p {
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 0%;
+}
+
+.container_explic {
+    align-items: center;
+}
+.container_explic p {
+    padding-right: 2%;
+}
+
+.explic img {
+    padding-left: 2%;
+    padding-right: 10%;
+    padding-bottom: 0%;
+}
+
+.explic img:hover {
+    transform: scale(1.05);
+    animation: 1s;
+}
+
+
+.container_explic {
+    display: flex;
+}
+
+.image_division {
+    width: 100%; 
+    height: 300px; 
+    overflow: hidden; 
+    position: relative;
+  }
+  
+  .image_division::before {
+    content: "";
+    background-image: url('fgv_AI.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.5;
+  }
+  
+
+
