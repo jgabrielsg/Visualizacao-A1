@@ -1,5 +1,6 @@
 
 .inicial_graph {
+    margin-top: 15vh;
     height: 15vh;
     width: 100%;
     display: flex;
@@ -20,3 +21,27 @@
     margin:0
 }
 
+
+/* Estilos para telas menores (tablet) */
+@media (max-width: 820px) {
+    .inicial_graph {
+        margin-top: 10vh;
+        height: 10vh;
+    }
+
+    .inicial_graph h2 {
+        font-size: 36px;
+    }
+}
+
+/* Estilos para telas menores (celular) */
+@media (max-width: 480px) {
+    .inicial_graph {
+        margin-top: 5vh;
+        height: 8vh;
+    }
+
+    .inicial_graph h2 {
+        font-size: 28px;
+    }
+}
