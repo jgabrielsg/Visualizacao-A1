@@ -72,7 +72,7 @@ def arrumar_tipos(df):
 
         except Exception as erro:
             print("!! Erro !!\n")
-            print(erro)
+            print(type(erro), erro.__class__.mro(), end ="\n\n")
 
     return df_copia
 
@@ -102,7 +102,6 @@ def filtrar_colunas(df, *colunas):
         print("Erro ao rodar a função.")
         print(type(erro), erro.__class__.mro(), end ="\n\n")
     
-
 def filtrar_estado(df,UF):
     """Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.
 
