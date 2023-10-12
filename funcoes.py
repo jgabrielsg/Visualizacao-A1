@@ -56,6 +56,7 @@ def arrumar_tipos(df):
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
     colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
 
+
     # Arruma os tipos das colunas de data
     for coluna in colunas_datas:
         try:
@@ -70,7 +71,7 @@ def arrumar_tipos(df):
     for coluna in colunas_dinheiro:
         try: 
             mask = df_copia[coluna].notna()
-            df_copia[coluna][mask] = df_copia[coluna][mask].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True)
+            df_copia.loc[mask, coluna] = df_copia.loc[mask, coluna].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True)
             df_copia[coluna] = df_copia[coluna].fillna(0).astype(float)
         
         except KeyError as erro:
@@ -197,3 +198,34 @@ def valores_unicos(df, coluna):
     except Exception as erro:
         print(f"Ocorreu um erro ao buscar valores únicos:")
         print(type(erro), erro.__class__.mro(), end ="\n\n")
+    
+def remover_espaços(df, coluna = "Area"):
+    """
+    Função que remove os espaços extras que existem na coluna "Area" do dataframe, ou outra coluna se especificada.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame que contém a coluna em questão.
+    coluna : str
+        Coluna que vai ter seus espaços extrar removidos.
+
+    Returns
+    -------
+    pandas.DataFrame
+        O data frame com a coluna especificada sem os espaços extras.
+    """
+    df_copia = df
+
+    try:
+        df_copia[coluna] = df_copia[coluna].str.rstrip()
+
+    except KeyError as erro:
+        print("!! ERRO !!\n")
+        print("A coluna:", coluna, ", não está presente no dataframe!\n")
+    
+    except Exception as error:
+        print("!! ERRO !!\n")
+        print("Não deu pra remover os espaços da coluna: ", coluna)
+    
+    return df_copia
