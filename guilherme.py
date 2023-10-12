@@ -19,7 +19,7 @@ piv = gr.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'
                         index = 'Sigla Unidade Federativa', fill_value=0)
 
 piv.plot(kind="bar")
-
+plt.yscale("log")
 plt.show()
     
 
