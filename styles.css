@@ -49,7 +49,7 @@ nav li a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url('a1pinho.jpg'); 
+    background-image: url('images/a1pinho.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat;
 }
@@ -72,6 +72,7 @@ nav li a {
     padding: 0% 0;
     padding-bottom: 3%;
     background-color:antiquewhite;
+    align-items: center
 }
 
 .explic>h2 {
@@ -105,9 +106,9 @@ nav li a {
 }
 
 .explic img {
-    padding-left: 2%;
-    padding-right: 10%;
-    padding-bottom: 0%;
+    margin-left: 2%;
+    margin-right: 10%;
+    margin-bottom: 0%;
 }
 
 .explic img:hover {
@@ -129,7 +130,7 @@ nav li a {
   
   .image_division::before {
     content: "";
-    background-image: url('fgv_AI.jpg'); 
+    background-image: url('images/fgv_AI.jpg'); 
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -138,6 +139,70 @@ nav li a {
     position: absolute;
     opacity: 0.5;
   }
-  
 
+  .container_botao_git{
+    display: flex;
+    justify-content: center;
+}
+
+  .botao_git {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    background-color: #4F2B0E;
+    border-radius: 25px;
+    color: #E1DFDB;
+    transition: transform 0.1s;
+    padding: 10% 300%;
+}
+
+.botao_git:hover {
+    transform: scale(1.05);
+}
+
+.container_explic_2 {
+    display:flex;
+    justify-content:center
+}
+
+.container_explic_2 img {
+    margin-right:5%;
+    margin-left:5%;
+    margin-top:5%
+}
+
+footer {
+    background-color: #010101; 
+    padding: 8vh; 
+    text-align: center; 
+}
+
+footer p {
+    margin: 10px; 
+    font-size: 16px; 
+    color: #333; 
+}
+
+/* JOAO.HTML */
+
+.inicial_graph {
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('images/minimalist.webp'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.inicial_graph h2 {
+    font-size: 46px;
+    color: #fff
+}
+
+.explic_graph img {
+    margin:0
+}
 
