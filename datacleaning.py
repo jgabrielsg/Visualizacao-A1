@@ -1,5 +1,5 @@
 import pandas as pd
-from funcoes import collect_data, arrumar_tipos
+from funcoes import arrumar_tipos
 
 pd.set_option('display.max_columns', None)
 
@@ -16,14 +16,21 @@ def clean_data(df):
     pandas.DataFrame
         Dataframe com as correções
     """
-    df.drop(columns=["Monit Eletronica"], inplace=True)
-    df.drop(columns=["Recol Domic Noturno"], inplace=True)
-    df.drop(columns=["Qtd Internacao Prov"], inplace=True)
-    df.drop(columns=["Comparecimento Juizo"], inplace=True)
-    df.drop(columns=["Qtd Valores Apreendidos i11"], inplace=True)
-    df.drop(columns=["Proib Ausentar Comarca"], inplace=True)
-    df.drop(columns=["Proib Acesso ou Freq"], inplace=True)
-    df.drop(columns=["Proib Contato"], inplace=True)
+
+    try:
+        df.drop(columns=["Monit Eletronica"], inplace=True)
+        df.drop(columns=["Recol Domic Noturno"], inplace=True)
+        df.drop(columns=["Qtd Internacao Prov"], inplace=True)
+        df.drop(columns=["Comparecimento Juizo"], inplace=True)
+        df.drop(columns=["Qtd Valores Apreendidos i11"], inplace=True)
+        df.drop(columns=["Proib Ausentar Comarca"], inplace=True)
+        df.drop(columns=["Proib Acesso ou Freq"], inplace=True)
+        df.drop(columns=["Proib Contato"], inplace=True)
+    
+    except Exception as error:
+        print("!! Erro !!\n")
+        print("Erro limpar o dataframe!\n")
+        print(error)
 
     # Remove linhas vazias
     df.dropna(axis=0, how='all', inplace=True)
