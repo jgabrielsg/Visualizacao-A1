@@ -18,7 +18,7 @@ regioes_cores = {"Norte": (["AC", "AM", "AP", "PA", "RO", "RR", "TO"], "green"),
                  "Sul": (["PR", "RS", "SC"], "purple")}
 
 barras = plt.barh(df_estados.index, df_estados["QUANTIDADE"])
-total_sum = df_estados["QUANTIDADE"].sum()
+total_soma = df_estados["QUANTIDADE"].sum()
 
 for num, barra in enumerate(barras):
     estado = df_estados.index[num]
@@ -26,20 +26,20 @@ for num, barra in enumerate(barras):
         if estado in siglas:
             barra.set_color(cor)
 
-    width = barra.get_width()
-    percentage = (width / total_sum) * 100
-    plt.text(width, barra.get_y() + barra.get_height() / 2, f"{percentage:.2f}%", ha = "left", 
-             va = "center", fontsize=8, fontweight = "bold", color ="#010101", linespacing=0.9)
+    largura = barra.get_width()
+    percentage = (largura / total_soma) * 100
+    plt.text(largura, barra.get_y() + barra.get_height() / 2, f"{percentage:.2f}%", ha = "left", 
+             va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing=0.9)
 
 # Legenda
 for regiao, (siglas, cor) in regioes_cores.items():
     plt.bar(0, 0, color=cor, label=regiao)
-plt.legend(loc='lower right')
+plt.legend(loc = "lower right")
 
 # Personalização do gráfico
 plt.xlabel("Quantidade")
 plt.ylabel("Estados")
 plt.title("Quantidade de Apreensões por Estado")
-plt.grid(axis='x', linestyle='--', alpha=0.6)
+plt.grid(axis = "x", linestyle = "--", alpha=0.6)
 
-plt.savefig('graficos/graficovinicius.png')
+plt.savefig("graficos/graficovinicius.png")
