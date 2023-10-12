@@ -1,8 +1,14 @@
-import numpy
-import pandas
-from funcoes import collect_data, filtrar_colunas
+import numpy as np
+import pandas as pd
+from funcoes import collect_data, filtrar_colunas, valores_unicos, contar_repeticoes, valores_unicos
+from datacleaning import clean_data
+import matplotlib.pyplot as plt
 
-pasta = "dados"
-df = collect_data(pasta)
+df_area = filtrar_colunas(collect_data(), "Area")
+df_area["Area"] = df_area["Area"].str.strip()
 
-print(filtrar_colunas(df, "Area", "Sigla Unidade Federativa"))
+df_area = contar_repeticoes(df_area, "Area")
+df_area = df_area.drop_duplicates(subset = ["Area"], keep = "first")
+df_area = df_area.set_index("Area").rename_axis(index = "AREA").sort_values("QUANTIDADE", ascending=True)
+
+print(df_area)

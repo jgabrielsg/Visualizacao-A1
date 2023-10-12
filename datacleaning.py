@@ -30,7 +30,7 @@ def clean_data(df):
     # Remove colunas vazias 
     df.dropna(axis=1, how='all', inplace=True)
 
-    arrumar_tipos(df)
+    df = arrumar_tipos(df)
 
     return df
 
@@ -40,5 +40,3 @@ def format_currency(value):
         return "${:,.2f}M".format(value)
     else:
         return 0.0
-
-print(clean_data(collect_data()))

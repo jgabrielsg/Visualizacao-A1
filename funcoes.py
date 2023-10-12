@@ -40,7 +40,7 @@ def arrumar_tipos(df):
     Returns
     -------
     pandas.DataFrame
-       DataFrame com
+       DataFrame
     """
 
     df_copia = df
@@ -48,19 +48,31 @@ def arrumar_tipos(df):
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
     colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
 
-    try:
-        # Arruma os tipos das colunas de data
-        for coluna in colunas_datas:
+    # Arruma os tipos das colunas de data
+    for coluna in colunas_datas:
+        try:
             df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
 
-        # Arruma os tipos das colunas de valores monetários
-        for coluna in colunas_dinheiro:
-            df_copia[coluna] = df_copia[coluna].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True).astype(float)
+        except KeyError as erro:
+            print("!! ERRO !!\n")
+            print("A coluna:", coluna, ", não está presente no dataframe!\n")
+            print(type(erro), erro.__class__.mro())
 
-    except KeyError as erro:
-        print("!! ERRO !!\n")
-        print("A coluna:", coluna, ", não está presente no dataframe!\n")
-        print(type(erro), erro.__class__.mro())
+    # Arruma os tipos das colunas de valores monetários
+    for coluna in colunas_dinheiro:
+        try: 
+            mask = df_copia[coluna].notna()
+            df_copia[coluna][mask] = df_copia[coluna][mask].str.replace('R\$', '', regex=True).str.replace('.', '', regex=True).str.replace(',', '.', regex=True)
+            df_copia[coluna] = df_copia[coluna].fillna(0).astype(float)
+        
+        except KeyError as erro:
+            print("!! ERRO !!\n")
+            print("A coluna:", coluna, ", não está presente no dataframe!\n")
+            print(type(erro), erro.__class__.mro())
+
+        except Exception as erro:
+            print("!! Erro !!\n")
+            print(erro)
 
     return df_copia
 
@@ -82,8 +94,13 @@ def filtrar_colunas(df, *colunas):
     try:
         df_filtrado = df[list(colunas)]
         return df_filtrado
+    
     except KeyError as erro:
-        print(f"Coluna não encontrada: {erro}")
+        print("Coluna não encontrada.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
+    except Exception as erro:
+        print("Erro ao rodar a função.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
     
 
 def filtrar_estado(df,UF):
@@ -104,11 +121,72 @@ def filtrar_estado(df,UF):
     try:
         if type(UF) != str:
             raise KeyError
+        
         df_estado = df[df['Sigla Unidade Federativa'] == UF]
+
         if df_estado.empty:
             raise Exception
+        
         return df_estado
+    
     except KeyError as erro:
-        print(f"Dados inseridos não seguem o formato desejado. {erro}")
+        print("\nDados inseridos não seguem o formato desejado.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
     except Exception as erro:
-        print(f"Nenhum dado encontrado para a sigla escolhida. {erro}")
+        print("Nenhum dado encontrado para a sigla escolhida.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
+
+def contar_repeticoes(df, *colunas):
+    """
+    Conta o número de repetições da(s) coluna(s) especificada(s) de um DataFrame.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame que contém os dados a serem contados.
+    *colunas : str
+        Uma ou mais colunas que vão ter as repetições contadas.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame original com uma coluna adicional "QUANTIDADE" indicando o número de repetições.
+    """
+    try:
+        repeticoes = df.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
+        df = df.merge(repeticoes, on = list(colunas), how = "left")
+        return df
+    
+    except KeyError as erro:
+        print("\nDados inseridos não seguem o formato desejado.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
+
+    except Exception as erro:
+        print("Alguns dos dados passados não foram encontrados.")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
+
+def valores_unicos(df, coluna):
+    """
+    Retorna uma lista de valores únicos de uma coluna específica de um DataFrame.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame que contém os dados a serem analisados.
+    coluna : str
+        Coluna que vai ter seus valores únicos analisados.
+
+    Returns
+    -------
+    list
+        Uma lista contendo os valores únicos da coluna especificada.
+    """
+    try:
+        lista_de_valores_unicos = []
+        for unico in df[coluna].unique():
+            lista_de_valores_unicos.append(unico)
+        return lista_de_valores_unicos
+    
+    except Exception as erro:
+        print(f"Ocorreu um erro ao buscar valores únicos:")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")

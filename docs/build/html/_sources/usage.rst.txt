@@ -1,0 +1,7 @@
+Funções
+----------------
+
+To retrieve a list of random ingredients,
+you can use the ``funcoes.filtrar_estado()`` function:
+
+.. autofunction:: funcoes.filtrar_estado
