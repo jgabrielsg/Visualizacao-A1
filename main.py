@@ -5,7 +5,4 @@ from gustavo import gustavo_plot
 df = funcoes.collect_data()
 
 df = clean_data(df)
-print(df["Area"])
 
-gustavo_plot(df)
-# print(df)

@@ -36,6 +36,4 @@ def gustavo_plot(df):
     ax.set_title("grafico")
     ax.legend(loc="upper right")
 
-    plt.xticks(rotation=45)  # Rotate the x-axis labels for better readability
-
-    plt.show()
+    # plt.show()
