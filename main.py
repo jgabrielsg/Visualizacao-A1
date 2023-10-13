@@ -7,4 +7,4 @@ df = funcoes.collect_data()
 
 df = clean_data(df)
 
-# gustavo_plot(df)
+gustavo_plot(df)
