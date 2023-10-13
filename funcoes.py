@@ -258,3 +258,39 @@ def remover_espaços(df, coluna = "Area"):
         print("Não deu pra remover os espaços da coluna: ", coluna)
     
     return df_copia
+
+def arrumar_escrita(df, coluna = "Area"):
+    """
+    Função que arruma bugs do dataframe em específico, em que, somente em algumas linhas caractéres como "á" estão bugados.
+    Exemplo: "Fraudes Bancï¿½rias" ao invés de "Fraudes Bancárias"
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame com a coluna "Area" não corrigida
+    coluna : str
+        Coluna que vai ser corrigida, normalmente a coluna "Area".
+    Returns
+    -------
+    pandas.DataFrame
+        O data frame com a coluna especificada arrumada.
+    """
+    df_copia = df
+
+    nome_correto = {"Crimes de ï¿½dio e Pornografia Infantil": "Crimes de Ódio e Pornografia Infantil",
+                    "Fraudes Bancï¿½rias": "Fraudes Bancárias",
+                    "Trï¿½fico de Drogas": "Tráfico de Drogas",
+                    "Crimes Fazendï¿½rios": "Crimes Fazendários",
+                    "Crimes Contra o Patrimï¿½nio": "Crimes Contra o Patrimônio",
+                    "Crimes de Corrupï¿½ï¿½o": "Crimes de Corrupção",
+                    "Crimes Previdenciï¿½rios": "Crimes Previdenciários",
+                    "Trï¿½fico de Armas": "Tráfico de Armas",
+                    "Crimes Ambientais e Contra o Patrimï¿½nio Cultural": "Crimes Ambientais e Contra o Patrimônio Cultural"}
+
+    try:
+        df_copia[coluna] = df_copia[coluna].replace(nome_correto)
+
+    except Exception:
+        print("!! ERRO !!\n")
+        print("Não deu para arrumar os nomes da coluna 'Area': ", coluna)
+
+    return df_copia
