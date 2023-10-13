@@ -6,3 +6,5 @@ import pandas as pd
 df = funcoes.collect_data()
 
 df = clean_data(df)
+
+# gustavo_plot(df)
