@@ -24,9 +24,10 @@ def make_gustavo_plot(df):
 
     #Deixando mais curtos os títulos para que a legenda seja mais legível
     df_copia["Area"] = df_copia["Area"].replace({"Crimes Ambientais e Contra o Patrimônio Cultural": "Crimes Ambientais",
-                                                 "Crimes de Ódio e Pornografia Infantil": "Crimes de Ódio e Porn. Inf."})
+                                                 "Crimes de Ódio e Pornografia Infantil": "Crimes de Ódio e Porn. Infantil"})
     
     df_copia["Mes"] = pd.to_datetime(df_copia['Data da Deflagracao']).dt.strftime('%m/%Y')
+    #TODO remover a mensagem de aviso q isso aqui tá dando
 
     # Usado para saber as áreas de atuação das operações mais frequêntes
     contagem_area = df_copia["Area"].value_counts().index
@@ -47,15 +48,15 @@ def make_gustavo_plot(df):
     plt.stackplot(grouped.columns, grouped.values, labels=grouped.index, alpha=0.8, colors=colors)
     plt.xticks(range(1, 13), rotation=30)
     plt.xlim(grouped.columns.min(), grouped.columns.max())
-    plt.xlabel('mês de 2022')
+    plt.xlabel('Mês')
 
-    plt.ylabel('Número de operações policiais')
+    plt.ylabel("Quantidade de Operações")
     ax = plt.gca()
     y_intervals = [100, 200, 300, 400, 500, 600, 700, 800, 900]  # Define as quantidades das linhas que cruzam o gráfico
     for y in y_intervals:
         ax.axhline(y=y, color='black', linestyle='--', alpha=0.3)
     
-    plt.title('Tipos de operações durante 2022')
+    plt.title("Operações policiais por Área de Atuação em 2022")
     plt.legend(title='Area', title_fontsize='14', loc='upper right', bbox_to_anchor=(1.13, 1))
     plt.show()
 
