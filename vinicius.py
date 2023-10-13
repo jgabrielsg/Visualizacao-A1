@@ -1,5 +1,3 @@
-import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 from funcoes import collect_data, filtrar_colunas, contar_repeticoes
 
@@ -36,7 +34,7 @@ for num, barra in enumerate(barras):
 
 # Legenda
 for regiao, (siglas, cor) in regioes_cores.items():
-    plt.bar(0, 0, color=cor, label=regiao)
+    plt.bar(0, 0, color = cor, label = regiao)
 plt.legend(loc = "lower right")
 
 # Personalização do gráfico
