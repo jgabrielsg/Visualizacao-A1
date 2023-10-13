@@ -1,5 +1,5 @@
 import pandas as pd
-from funcoes import arrumar_tipos, remover_espaços
+from funcoes import arrumar_tipos, remover_espaços, arrumar_escrita
 
 pd.set_option('display.max_columns', None)
 
@@ -39,6 +39,7 @@ def clean_data(df):
 
     df = arrumar_tipos(df)
     df = remover_espaços(df)
+    df = arrumar_escrita(df)
 
     return df
 

@@ -7,4 +7,6 @@ Funções
 
 .. autofunction:: funcoes.filtrar_colunas
 
-.. autofunction:: funcoes.filtrar_estado
+.. autofunction:: funcoes.contar_repeticoes
+
+.. autofunction:: funcoes.remover_espaços

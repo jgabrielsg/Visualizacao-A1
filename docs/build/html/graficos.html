@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="pt" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Funcoes &#8212; Documentação A1-Linguagem de Programação 0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=6e1fffae"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=3b002d5c"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="prev" title="Funções" href="funcoes.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="funcoes">
+<h1>Funcoes<a class="headerlink" href="#funcoes" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="gustavo.make_gustavo_plot">
+<span class="sig-prename descclassname"><span class="pre">gustavo.</span></span><span class="sig-name descname"><span class="pre">make_gustavo_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gustavo.make_gustavo_plot" title="Link to this definition">¶</a></dt>
+<dd><p>Cria um stackplot das operações policiais ao longo do tempo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – O DataFrame com os dados necessários.</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Um objeto de figura do Matplotlib contendo o gráfico gerado.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="joao.make_plot_joao">
+<span class="sig-prename descclassname"><span class="pre">joao.</span></span><span class="sig-name descname"><span class="pre">make_plot_joao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#joao.make_plot_joao" title="Link to this definition">¶</a></dt>
+<dd><p>Cria um gráfico de barras que exibe os valores apreendidos por estado em 2022.</p>
+<p>Esta função recebe um DataFrame contendo os dados de valores apreendidos por estado e
+gera um gráfico de barras que mostra os valores apreendidos por estado em 2022.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – O DataFrame contendo os dados dos valores apreendidos por estado.</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Um objeto de figura do Matplotlib contendo o gráfico gerado.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Figure</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Exemplo de uso:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">collect_data</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_plot_joao</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;graficos/graficojoao.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="joao.graph_currency">
+<span class="sig-prename descclassname"><span class="pre">joao.</span></span><span class="sig-name descname"><span class="pre">graph_currency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#joao.graph_currency" title="Link to this definition">¶</a></dt>
+<dd><p>Formata valores em milhões para uso em legendas de gráficos.</p>
+<p>Esta função formata o valor para exibir em formato de moeda, indicando milhões
+se o valor for maior ou igual a 1 milhão.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>int</em>) – O valor a ser formatado.</p></li>
+<li><p><strong>pos</strong> (<em>int</em>) – Argumento obrigatório da função FuncFormatter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>A representação formatada do valor em milhões, no formato «$X.XXM» se o valor
+for maior ou igual a 1 milhão, caso contrário, no formato «$X».</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Exemplo de uso:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_currency</span><span class="p">(</span><span class="mi">1500000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&#39;$1.5M&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_currency</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&#39;$50&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="guilherme.make_plot_guilherme">
+<span class="sig-prename descclassname"><span class="pre">guilherme.</span></span><span class="sig-name descname"><span class="pre">make_plot_guilherme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guilherme.make_plot_guilherme" title="Link to this definition">¶</a></dt>
+<dd><p>Cria um gráfico de barras que exibe de forma comparativa os valores apreendidos em territórios indigenas e não-indigenas por estado.</p>
+<p>Esta função recebe um DataFrame contendo os dados de valores apreendidos por estado e
+gera um gráfico de barras que mostra os valores apreendidos por estado em territórios indigenas e não-indigenas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – O DataFrame contendo os dados dos valores apreendidos por estado.</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Um objeto de figura do Matplotlib contendo o gráfico gerado.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">A1-Linguagem de Programação</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegação</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="funcoes.html">Funções</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Funcoes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gustavo.make_gustavo_plot"><code class="docutils literal notranslate"><span class="pre">make_gustavo_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#joao.make_plot_joao"><code class="docutils literal notranslate"><span class="pre">make_plot_joao()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#joao.graph_currency"><code class="docutils literal notranslate"><span class="pre">graph_currency()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#guilherme.make_plot_guilherme"><code class="docutils literal notranslate"><span class="pre">make_plot_guilherme()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="funcoes.html" title="capítulo anterior">Funções</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Pesquisa rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Guilherme Buss, João Gabriel, Gustavo Bianchi e Vinicius Nascimento.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/graficos.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
