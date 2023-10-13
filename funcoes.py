@@ -175,15 +175,19 @@ def contar_repeticoes(df, *colunas):
     
     Example
     -------
-    
-    
+    >>> df_repeticoes = contar_repeticoes(collect_data(), "Sigla Unidade Federativa")
+    >>> df_repeticoes.shape[0]
+    27
+    >>> df_repeticoes.shape[1]
+    1
     """
     try:
-        repeticoes = df.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
-        df = df.merge(repeticoes, on = list(colunas), how = "left")
-        df = df.drop_duplicates(subset = list(colunas), keep = "first")
-        df = df.set_index(list(colunas)).sort_values("QUANTIDADE", ascending=True)
-        return df
+        df_copia = df.copy()
+        repeticoes = df_copia.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
+        df_copia = df_copia.merge(repeticoes, on = list(colunas), how = "left")
+        df_copia = df_copia.drop_duplicates(subset = list(colunas), keep = "first")
+        df_copia = df_copia.set_index(list(colunas)).sort_values("QUANTIDADE", ascending=True)
+        return df_copia
     
     except KeyError as erro:
         print("\nDados inseridos não seguem o formato desejado.")
@@ -208,6 +212,11 @@ def valores_unicos(df, coluna):
     -------
     list
         Uma lista contendo os valores únicos da coluna especificada.
+
+    Example
+    -------
+    >>> valores_unicos(collect_data(), "Sigla Unidade Federativa")
+    ['RR', 'MG', 'PI', 'RS', 'PR', 'MS', 'RJ', 'AC', 'AM', 'CE', 'GO', 'SP', 'RO', 'PE', 'BA', 'MT', 'ES', 'PA', 'SE', 'AL', 'SC', 'PB', 'DF', 'RN', 'TO', 'MA', 'AP']
     """
     try:
         lista_de_valores_unicos = []
@@ -248,42 +257,4 @@ def remover_espaços(df, coluna = "Area"):
         print("!! ERRO !!\n")
         print("Não deu pra remover os espaços da coluna: ", coluna)
     
-    return df_copia
-
-def arrumar_escrita(df, coluna = "Area"):
-    """
-    Função que arruma bugs do dataframe em específico, em que, somente em algumas linhas caractéres como "á" estão bugados.
-    Exemplo: "Fraudes Bancï¿½rias" ao invés de "Fraudes Bancárias"
-
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        DataFrame com a coluna "Area" não corrigida
-    coluna : str
-        Coluna que vai ser corrigida, normalmente a coluna "Area".
-
-    Returns
-    -------
-    pandas.DataFrame
-        O data frame com a coluna especificada arrumada.
-    """
-    df_copia = df
-
-    nome_correto = {"Crimes de ï¿½dio e Pornografia Infantil": "Crimes de Ódio e Pornografia Infantil",
-                    "Fraudes Bancï¿½rias": "Fraudes Bancárias",
-                    "Trï¿½fico de Drogas": "Tráfico de Drogas",
-                    "Crimes Fazendï¿½rios": "Crimes Fazendários",
-                    "Crimes Contra o Patrimï¿½nio": "Crimes Contra o Patrimônio",
-                    "Crimes de Corrupï¿½ï¿½o": "Crimes de Corrupção",
-                    "Crimes Previdenciï¿½rios": "Crimes Previdenciários",
-                    "Trï¿½fico de Armas": "Tráfico de Armas",
-                    "Crimes Ambientais e Contra o Patrimï¿½nio Cultural": "Crimes Ambientais e Contra o Patrimônio Cultural"}
-
-    try:
-        df_copia[coluna] = df_copia[coluna].replace(nome_correto)
-    
-    except Exception:
-        print("!! ERRO !!\n")
-        print("Não deu para arrumar os nomes da coluna 'Area': ", coluna)
-
     return df_copia
