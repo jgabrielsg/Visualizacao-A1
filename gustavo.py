@@ -58,7 +58,7 @@ def make_gustavo_plot(df):
     
     plt.title("Operações policiais por Área de Atuação em 2022")
     plt.legend(title='Area', title_fontsize='14', loc='upper right', bbox_to_anchor=(1.13, 1))
-    plt.show()
+    # plt.show()
 
     return plot
 
