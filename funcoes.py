@@ -30,7 +30,7 @@ def collect_data(pasta = pasta):
 
     for csv in arquivos_csv:
         caminho_arquivo = os.path.join(pasta, csv)
-        df = pd.read_csv(caminho_arquivo, encoding='latin-1', sep=";")
+        df = pd.read_csv(caminho_arquivo, encoding='latin1', sep=";")
         dataframes.append(df)
 
     df = pd.concat(dataframes, ignore_index=True)

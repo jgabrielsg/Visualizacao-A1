@@ -105,5 +105,6 @@ def make_plot_joao(df):
 
     return plot
 
-fig = make_plot_joao(clean_data(collect_data()))
-fig.savefig('graficos/graficojoao.png')
+if __name__ == "__main__":
+    fig = make_plot_joao(clean_data(collect_data()))
+    fig.savefig('graficos/graficojoao.png')

@@ -14,6 +14,7 @@
     <script src="_static/translations.js?v=3b002d5c"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="next" title="Funcoes" href="graficos.html" />
     <link rel="prev" title="Welcome to A1-Linguagem de Programação’s documentation!" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -102,29 +103,44 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="funcoes.filtrar_estado">
-<span class="sig-prename descclassname"><span class="pre">funcoes.</span></span><span class="sig-name descname"><span class="pre">filtrar_estado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UF</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcoes.filtrar_estado" title="Link to this definition">¶</a></dt>
-<dd><p>Recebe um DataFrame pandas e retorna um novo com os dados para um estado específico.</p>
+<dt class="sig sig-object py" id="funcoes.contar_repeticoes">
+<span class="sig-prename descclassname"><span class="pre">funcoes.</span></span><span class="sig-name descname"><span class="pre">contar_repeticoes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">colunas</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcoes.contar_repeticoes" title="Link to this definition">¶</a></dt>
+<dd><p>Conta o número de repetições da(s) coluna(s) especificada(s) de um DataFrame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame do qual se quer filtrar as colunas.</p></li>
-<li><p><strong>UF</strong> (<em>str</em>) – Sigla do estado do qual se deseja isolar os dados.</p></li>
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contém os dados a serem contados.</p></li>
+<li><p><strong>*colunas</strong> (<em>str</em>) – Uma ou mais colunas que vão ter as repetições contadas.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Retorno<span class="colon">:</span></dt>
-<dd class="field-even"><p>DataFrame composto apenas pelo estado escolhido.</p>
+<dd class="field-even"><p>DataFrame original com uma coluna adicional «QUANTIDADE» indicando o número de repetições.</p>
 </dd>
 <dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_filtrado</span> <span class="o">=</span> <span class="n">filtrar_estado</span><span class="p">(</span><span class="n">collect_data</span><span class="p">(),</span> <span class="s2">&quot;RS&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df_filtrado</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">809</span>
-</pre></div>
-</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.remover_espacos">
+<span class="sig-prename descclassname"><span class="pre">funcoes.</span></span><span class="sig-name descname"><span class="pre">remover_espaços</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coluna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Area'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcoes.remover_espacos" title="Link to this definition">¶</a></dt>
+<dd><p>Função que remove os espaços extras que existem na coluna «Area» do dataframe, ou outra coluna se especificada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contém a coluna em questão.</p></li>
+<li><p><strong>coluna</strong> (<em>str</em>) – Coluna que vai ter seus espaços extrar removidos.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>O data frame com a coluna especificada sem os espaços extras.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -151,9 +167,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#funcoes.collect_data"><code class="docutils literal notranslate"><span class="pre">collect_data()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#funcoes.arrumar_tipos"><code class="docutils literal notranslate"><span class="pre">arrumar_tipos()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#funcoes.filtrar_colunas"><code class="docutils literal notranslate"><span class="pre">filtrar_colunas()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#funcoes.filtrar_estado"><code class="docutils literal notranslate"><span class="pre">filtrar_estado()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes.contar_repeticoes"><code class="docutils literal notranslate"><span class="pre">contar_repeticoes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcoes.remover_espacos"><code class="docutils literal notranslate"><span class="pre">remover_espaços()</span></code></a></li>
 </ul>
 </li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="graficos.html">Funcoes</a></li>
 </ul>
 
 <div class="relations">
@@ -161,6 +181,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="capítulo anterior">Welcome to A1-Linguagem de Programação’s documentation!</a></li>
+      <li>Next: <a href="graficos.html" title="próximo capítulo">Funcoes</a></li>
   </ul></li>
 </ul>
 </div>
