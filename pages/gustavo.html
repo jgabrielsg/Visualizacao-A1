@@ -31,17 +31,37 @@
         <hr/>
 
         <p class="texto_explic">
-            O gráfico abaixo busca mostrar ao mesmo tempo, a área de maior atuação das operações policiais em 2022 e também sua frequência
-            ao longo do ano por meio de um <i>stackplot</i> (assim chamado pelo matplotlib).
+            Antes de fazer qualquer gráfico, eu busquei procurar padrões na base de dados afim de não correr o risco de escolher dados
+            com pouca relevância. Para isso, utilizei o código abaixo para me dar uma ideia da frequência de valores ao longo das colunas:
         </p>
+
+        <code>
+          for coluna in df:
+            print(df[coluna].value_counts(normalize = True).map('{:.1%}'.format))
+        </code>
+
+        <p>
+          O output gerado gerou alguns <i>insights</i> interessantes, como:
+          <list>
+            <li>38% das operações apreenderam dinheiro;</li>
+            <li>76% das operações contaram com prisão em flagrante;</li>
+            <li>84% das operações em território de fronteira foram no Paraguai, seguido por Bolívia, com 8%;</li>
+            <li>0.7% das operações foram em território indígena;</li>
+            <li>Os estados com maior quantidade de operações foram Paraná e São Paulo;</li>
+            <li>Os crimes mais combatidos pelas operações policiais em 2022 foram crimes fazendiários e tráfico de drogas;</li>
+          </list> 
+          Sendo assim, eu optei por fazer uma análise do tipo de crime combatido pelas operações por mês, criando assim um <i>stackplot</i>
+          (nome dado pelo matplotlib).
+        </p>
+      
 
         <div class="explic_graph">
             <img src="../graficos/graficogustavo.png" alt="nós". height="500", width="900px">
         </div>
 
         <p class="texto_explic">
-            Eu já imaginava que houvesse uma discrepância no gráfico, mas não esperava que a frequência de operações contra crimes fazendários fosse 
-            maior do que o combate ao tráfico de drogas. Embora seja interessante observar a queda brusca nas operações do mês de março, não foi possível
+            Antes da análise eu imaginava que o combate ao tráfico de drogas fosse ser o mais comum, mas eu não contava com a presença
+            dos crimes fazendários. Embora seja interessante observar a queda brusca nas operações do mês de março, não foi possível
             encontrar motivos para isso e em fontes externas, e como os dados analizados no trabalho contemplam apenas o ano de 2022 é difícil notar qualquer 
             padrão.  
         </p>

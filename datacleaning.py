@@ -23,7 +23,8 @@ def clean_data(df):
                               "Qtd Valores Apreendidos i11",
                               "Proib Ausentar Comarca",
                               "Proib Acesso ou Freq",
-                              "Proib Contato"]
+                              "Proib Contato",
+                              "Checksum Id Operacao"]
     
     for coluna in colunas_nao_utilizadas:
         try:
