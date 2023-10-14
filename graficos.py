@@ -256,17 +256,13 @@ if __name__ == "__main__":
     df = clean_data(collect_data())
 
     fig_guilherme = make_plot_guilherme(df)
-    fig_guilherme.show()
     fig_guilherme.savefig('graficos/graficoguilherme.png')
 
     fig_gustavo = make_gustavo_plot(df)
-    fig_gustavo.show()
     fig_gustavo.savefig('graficos/graficogustavo.png')
 
     fig_joao = make_plot_joao(df)
-    fig_joao.show()
     fig_joao.savefig('graficos/graficojoao.png')
 
     fig_vinicius = make_plot_vinicius(df)
-    fig_vinicius.show()
     fig_vinicius.savefig('graficos/graficovinicius.png')
