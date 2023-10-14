@@ -16,20 +16,22 @@ def clean_data(df):
         Dataframe com as correções
     """
 
-    try:
-        df.drop(columns=["Monit Eletronica"], inplace=True)
-        df.drop(columns=["Recol Domic Noturno"], inplace=True)
-        df.drop(columns=["Qtd Internacao Prov"], inplace=True)
-        df.drop(columns=["Comparecimento Juizo"], inplace=True)
-        df.drop(columns=["Qtd Valores Apreendidos i11"], inplace=True)
-        df.drop(columns=["Proib Ausentar Comarca"], inplace=True)
-        df.drop(columns=["Proib Acesso ou Freq"], inplace=True)
-        df.drop(columns=["Proib Contato"], inplace=True)
+    colunas_nao_utilizadas = ["Monit Eletronica",
+                              "Recol Domic Noturno",
+                              "Qtd Internacao Prov",
+                              "Comparecimento Juizo",
+                              "Qtd Valores Apreendidos i11",
+                              "Proib Ausentar Comarca",
+                              "Proib Acesso ou Freq",
+                              "Proib Contato"]
     
-    except Exception as error:
-        print("!! Erro !!\n")
-        print("Erro limpar o dataframe!\n")
-        print(error)
+    for coluna in colunas_nao_utilizadas:
+        try:
+            df.drop(coluna, axis=1, inplace=True)
+        except Exception as error:
+            print("!! Erro !!\n")
+            print("Erro limpar o dataframe!\n")
+            print(error)
 
     # Remove linhas vazias
     df.dropna(axis=0, how='all', inplace=True)

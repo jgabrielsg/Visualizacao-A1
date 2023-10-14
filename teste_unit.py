@@ -1,8 +1,8 @@
 import unittest
 import pandas as pd
 from pandas.testing import assert_frame_equal
-from funcoes import collect_data, filtrar_colunas, remover_espacos
-from datacleaning import arrumar_tipos
+from funcoes import collect_data, filtrar_colunas
+from datacleaning import arrumar_tipos, clean_data
 
 class DFTests(unittest.TestCase):
 
@@ -21,10 +21,10 @@ class DFTests(unittest.TestCase):
         self.df = pd.read_csv("testes_dados/arrumar_tipos/arrumar_tipos.csv", encoding='latin1', sep =";")
         assert_frame_equal(self.gabarito, arrumar_tipos(self.df))
 
-    def test_remover_espacos(self):
-        self.gabarito = pd.read_csv("testes_dados/remover_espacos/gabarito.csv", encoding='latin1', sep =";")
-        self.df = pd.read_csv("testes_dados/remover_espacos/espacado.csv", encoding='latin1', sep =";")
-        assert_frame_equal(self.gabarito, remover_espacos(self.df, "espaco"))
+    def test_clean_data(self):
+        self.gabarito = pd.read_csv("testes_dados/clean_data/gabarito.csv", encoding='utf-8', sep =";")
+        self.df =  pd.read_csv("testes_dados/clean_data/sujo.csv", encoding='utf-8', sep =";")
+        assert_frame_equal(self.gabarito, clean_data(self.df))
 
     # Teste collect_data
     def test_filtrar_colunas(self):
