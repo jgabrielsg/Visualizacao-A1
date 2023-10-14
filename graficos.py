@@ -107,7 +107,7 @@ def make_plot_guilherme(df):
     plt.grid(axis='y', linestyle='--', alpha=0.3)
 
     plt.title('Quantidade Apreendida em Território Indigena', fontsize=12)
-    legenda = ['Sim', 'Não']
+    legenda = ['Não','Sim']
     plt.legend(legenda, title='Atuação em território indigena', title_fontsize=10, fontsize=8)
 
     return plt
@@ -127,7 +127,6 @@ def make_gustavo_plot(df):
     """
 
     # Cria uma cópia das colunas necessáras do dataframe
-    df_copia = df.copy()
     df_copia = filtrar_colunas(df, "Data da Deflagracao", "Area")
 
     #Deixando mais curtos os títulos para que a legenda seja mais legível
