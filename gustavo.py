@@ -23,18 +23,20 @@ def make_gustavo_plot(df):
     df_copia = remover_espacos(df)
     df_copia = filtrar_colunas(df_copia, "Data da Deflagracao", "Area")
 
+    # print(df_copia["Area"].unique())
+
     #Deixando mais curtos os títulos para que a legenda seja mais legível
     df_copia.loc[df_copia["Area"] == "Crimes Ambientais e Contra o Patrimônio Cultural", "Area"] = "Crimes Ambientais"
     df_copia.loc[df_copia["Area"] == "Crimes de Ódio e Pornografia Infantil", "Area"] = "Crimes de Ódio e Porn. Infantil"
     
-    df_copia["Mes"] = pd.to_datetime(df_copia['Data da Deflagracao']).dt.strftime('%m/%Y')
+    df_copia["Data de Deflagracao"] = df_copia['Data da Deflagracao'].dt.strftime('%m/%Y')
     #TODO remover a mensagem de aviso q isso aqui tá dando
 
     # Usado para saber as áreas de atuação das operações mais frequêntes
     contagem_area = df_copia["Area"].value_counts().index
 
     # Agrupa por mês e área de atuação as operações
-    grouped = df_copia.groupby(['Area', 'Mes']).size().unstack(fill_value=0)
+    grouped = df_copia.groupby(['Area', 'Data de Deflagracao']).size().unstack(fill_value=0)
 
     grouped = grouped.loc[contagem_area[:10]]
 
@@ -56,6 +58,7 @@ def make_gustavo_plot(df):
     
     plt.title("Operações policiais por Área de Atuação em 2022")
     plt.legend(title='Area', title_fontsize='14', loc='upper right', bbox_to_anchor=(1.13, 1))
+    plt.show()
 
     return plot
 
