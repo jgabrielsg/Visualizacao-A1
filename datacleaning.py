@@ -63,14 +63,13 @@ def arrumar_tipos(df):
        DataFrame com os tipos corrigidos
     """
 
-    df_copia = df
     colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
     colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
 
     # Arruma os tipos das colunas de data
     for coluna in colunas_datas:
         try:
-            df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+            df[coluna] = pd.to_datetime(df[coluna], format='%d/%m/%Y')
         except KeyError as erro:
             print("A coluna:", coluna, ", não está presente no dataframe!")
         except Exception as erro:
@@ -87,7 +86,7 @@ def arrumar_tipos(df):
         except Exception as erro:
             print("Não foi possível converter a coluna", coluna, "em float!")
 
-    return df_copia
+    return df
 
 def arrumar_escrita(df, coluna = "Area"):
     """
@@ -104,7 +103,6 @@ def arrumar_escrita(df, coluna = "Area"):
     pandas.DataFrame
         O data frame com a coluna especificada arrumada.
     """
-    df_copia = df
 
     nome_correto = {"Crimes de ï¿½dio e Pornografia Infantil": "Crimes de Ódio e Pornografia Infantil",
                     "Fraudes Bancï¿½rias": "Fraudes Bancárias",
@@ -117,8 +115,8 @@ def arrumar_escrita(df, coluna = "Area"):
                     "Crimes Ambientais e Contra o Patrimï¿½nio Cultural": "Crimes Ambientais e Contra o Patrimônio Cultural"}
 
     try:
-        df_copia[coluna] = df_copia[coluna].replace(nome_correto)
+        df[coluna] = df[coluna].replace(nome_correto)
     except Exception:
         print("Não deu para arrumar os nomes da coluna 'Area': ", coluna)
 
-    return df_copia
+    return df

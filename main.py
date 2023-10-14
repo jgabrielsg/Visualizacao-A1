@@ -7,5 +7,7 @@ df = funcoes.collect_data()
 
 df = datacleaning.clean_data(df)
 
+# print(df["Area"].unique())
+
 # make_gustavo_plot(df)
 # make_vinicius_plot()
