@@ -22,17 +22,17 @@ def make_plot_guilherme(df):
     Figure
         Um objeto de figura do Matplotlib contendo o gráfico gerado.
     """
-    # df_copia = filtrar_colunas(df, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()
+    df_copia = filtrar_colunas(df, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()
 
-    # #Remove os estados sem atuação em território indigena
-    # estados_ap_ind = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
-    # df_ap_ind = df_copia[df_copia['Sigla Unidade Federativa'].isin(estados_ap_ind)]
+    #Remove os estados sem atuação em território indigena
+    estados_ap_ind = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
+    df_ap_ind = df_copia[df_copia['Sigla Unidade Federativa'].isin(estados_ap_ind)]
 
-    # df_agrupado = df_ap_ind.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
+    df_agrupado = df_ap_ind.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
 
-    # df_pivot = df_agrupado.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
+    df_pivot = df_agrupado.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
 
-    df.plot(kind='bar', edgecolor='white', linewidth=1)
+    df_pivot.plot(kind='bar', edgecolor='white', linewidth=1)
     plt.yscale("log")
 
     plt.title('Quantidade Apreendida em Território Indigena', fontsize=12)
@@ -44,10 +44,10 @@ def make_plot_guilherme(df):
     plt.legend(legenda, title='Atuação em território indigena', title_fontsize=10, fontsize=8)
     
     return plt
-    
+
 
 if __name__ == "__main__":
     df = clean_data(collect_data())
-    fig = make_plot_guilherme(criar_df_guilherme(df))
+    fig = make_plot_guilherme(df)
     fig.show()
     fig.savefig('graficos/graficoguilherme.png')
