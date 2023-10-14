@@ -77,10 +77,20 @@ def make_plot_guilherme(df):
     -------
     Figure
         Um objeto de figura do Matplotlib contendo o gráfico gerado.
-    """
-    df_copia = filtrar_colunas(df, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()
+    
+    Example
+    -------
+    Exemplo de uso:
 
-    #Remove os estados sem atuação em território indigena
+    >>> df = clean_data(collect_data())
+    >>> fig = make_plot_guilherme(df)
+    >>> fig.savefig('graficos/graficoguilherme.png')
+    """
+    #Previne que o df original seja modificado.
+    df_copia = df.copy()
+    df_copia = filtrar_colunas(df_copia, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa')
+
+    #Remove os estados sem atuação em território indigena.
     estados_ap_ind = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
     df_ap_ind = df_copia[df_copia['Sigla Unidade Federativa'].isin(estados_ap_ind)]
 
