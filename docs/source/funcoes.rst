@@ -3,10 +3,12 @@ Funções
 
 .. autofunction:: funcoes.collect_data
 
-.. autofunction:: funcoes.arrumar_tipos
-
 .. autofunction:: funcoes.filtrar_colunas
+
+.. autofunction:: funcoes.filtrar_estado
 
 .. autofunction:: funcoes.contar_repeticoes
 
-.. autofunction:: funcoes.remover_espaços
+.. autofunction:: funcoes.valores_unicos
+
+.. autofunction:: joao.graph_currency

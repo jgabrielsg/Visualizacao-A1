@@ -13,9 +13,9 @@ import sys
 sys.path.insert(0, os.path.abspath('..\..'))
 
 project = 'A1-Linguagem de Programação'
-copyright = '2023, Guilherme Buss, João Gabriel, Gustavo Bianchi e Vinicius Nascimento'
+copyright = '2023, Guris do Sul Corporation'
 author = 'Guilherme Buss, João Gabriel, Gustavo Bianchi e Vinicius Nascimento'
-release = '0.1'
+release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -36,5 +36,5 @@ language = 'pt'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+html_theme = 'agogo'
 html_static_path = ['_static']

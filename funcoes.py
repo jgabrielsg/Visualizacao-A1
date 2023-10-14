@@ -177,37 +177,6 @@ def valores_unicos(df, coluna):
     except Exception as erro:
         print(f"Ocorreu um erro ao buscar valores únicos:")
         print(type(erro), erro.__class__.mro(), end ="\n\n")
-    
-def remover_espacos(df, coluna = "Area"):
-    """
-    Função que remove os espaços extras que existem na coluna "Area" do dataframe, ou outra coluna se especificada.
-
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        DataFrame que contém a coluna em questão.
-    coluna : str
-        Coluna que vai ter seus espaços extrar removidos.
-
-    Returns
-    -------
-    pandas.DataFrame
-        O data frame com a coluna especificada sem os espaços extras.
-    """
-    df_copia = df
-
-    try:
-        df_copia[coluna] = df_copia[coluna].str.rstrip()
-
-    except KeyError as erro:
-        print("!! ERRO !!\n")
-        print("A coluna:", coluna, ", não está presente no dataframe!\n")
-    
-    except Exception as error:
-        print("!! ERRO !!\n")
-        print("Não deu pra remover os espaços da coluna: ", coluna)
-    
-    return df_copia
 
 def criar_df_guilherme(df_original):
     df_copia = filtrar_colunas(df_original, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()

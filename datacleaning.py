@@ -1,5 +1,4 @@
 import pandas as pd
-from funcoes import remover_espacos
 
 pd.set_option('display.max_columns', None)
 
@@ -38,7 +37,7 @@ def clean_data(df):
     df.dropna(axis=1, how='all', inplace=True)
 
     df = arrumar_tipos(df)
-    df = remover_espacos(df)
+    df["Area"] = df["Area"].str.rstrip()
     df = arrumar_escrita(df)
 
     return df

@@ -11,7 +11,6 @@ def make_plot_guilherme(df):
     Esta função recebe um DataFrame contendo os dados de valores apreendidos por estado e
     gera um gráfico de barras que mostra os valores apreendidos por estado em territórios indigenas e não-indigenas.
 
-
     Parameters
     ----------
     df : DataFrame
@@ -62,14 +61,13 @@ def make_gustavo_plot(df):
     # Cria uma cópia das colunas necessáras do dataframe
     df_copia = filtrar_colunas(df, "Data da Deflagracao", "Area")
 
-    # print(df_copia["Area"].unique())
-
     #Deixando mais curtos os títulos para que a legenda seja mais legível
     df_copia.loc[df_copia["Area"] == "Crimes Ambientais e Contra o Patrimônio Cultural", "Area"] = "Crimes Ambientais"
     df_copia.loc[df_copia["Area"] == "Crimes de Ódio e Pornografia Infantil", "Area"] = "Crimes de Ódio e Porn. Infantil"
     
+    #Evita que um aviso do pandas apareca criando um novo df
+    df_copia = df_copia.copy()
     df_copia["Data de Deflagracao"] = df_copia['Data da Deflagracao'].dt.strftime('%m/%Y')
-    #TODO remover a mensagem de aviso q isso aqui tá dando
 
     # Usado para saber as áreas de atuação das operações mais frequêntes
     contagem_area = df_copia["Area"].value_counts().index
