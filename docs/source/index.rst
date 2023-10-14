@@ -17,6 +17,4 @@ Contents
 
 .. toctree::
    funcoes
-
-.. toctree::
    graficos
