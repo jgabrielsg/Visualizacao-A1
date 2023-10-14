@@ -1,9 +1,7 @@
 import pandas as pd
 import os
 
-pasta = 'dados'
-
-def collect_data(pasta = pasta):
+def collect_data(pasta = 'dados'):
     """Coleta os dados do CSV e une eles em apenas um dataframe
 
     Parameters
