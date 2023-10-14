@@ -209,38 +209,15 @@ def remover_espacos(df, coluna = "Area"):
     
     return df_copia
 
-def arrumar_escrita(df, coluna = "Area"):
-    """
-    Função que arruma bugs do dataframe em específico, em que, somente em algumas linhas caractéres como "á" estão bugados.
-    Exemplo: "Fraudes Bancï¿½rias" ao invés de "Fraudes Bancárias"
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        DataFrame com a coluna "Area" não corrigida
-    coluna : str
-        Coluna que vai ser corrigida, normalmente a coluna "Area".
-    Returns
-    -------
-    pandas.DataFrame
-        O data frame com a coluna especificada arrumada.
-    """
-    df_copia = df
+def criar_df_guilherme(df_original):
+    df_copia = filtrar_colunas(df_original, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()
 
-    nome_correto = {"Crimes de ï¿½dio e Pornografia Infantil": "Crimes de Ódio e Pornografia Infantil",
-                    "Fraudes Bancï¿½rias": "Fraudes Bancárias",
-                    "Trï¿½fico de Drogas": "Tráfico de Drogas",
-                    "Crimes Fazendï¿½rios": "Crimes Fazendários",
-                    "Crimes Contra o Patrimï¿½nio": "Crimes Contra o Patrimônio",
-                    "Crimes de Corrupï¿½ï¿½o": "Crimes de Corrupção",
-                    "Crimes Previdenciï¿½rios": "Crimes Previdenciários",
-                    "Trï¿½fico de Armas": "Tráfico de Armas",
-                    "Crimes Ambientais e Contra o Patrimï¿½nio Cultural": "Crimes Ambientais e Contra o Patrimônio Cultural"}
+    #Remove os estados sem atuação em território indigena
+    df_copia = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
+    df_copia = df_copia[df_copia['Sigla Unidade Federativa'].isin(df_copia)]
 
-    try:
-        df_copia[coluna] = df_copia[coluna].replace(nome_correto)
+    df_copia = df_copia.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
 
-    except Exception:
-        print("!! ERRO !!\n")
-        print("Não deu para arrumar os nomes da coluna 'Area': ", coluna)
-
-    return df_copia
+    df_guilherme = df_copia.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
+    
+    return df_guilherme 
