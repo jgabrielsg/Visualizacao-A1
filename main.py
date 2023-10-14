@@ -1,11 +1,15 @@
-import funcoes
-import datacleaning
-from gustavo import make_gustavo_plot
-from vinicius import make_vinicius_plot
+from funcoes import collect_data
+from datacleaning import clean_data
+import graficos
 
-df = funcoes.collect_data()
+df = collect_data()
+df = clean_data(df)
 
-df = datacleaning.clean_data(df)
-
-# make_gustavo_plot(df)
-# make_vinicius_plot()
+fig_vinicius = graficos.make_plot_vinicius(df)
+fig_vinicius.savefig('graficos/graficovinicius.png')
+fig_guilherme = graficos.make_plot_guilherme(df)
+fig_guilherme.savefig('graficos/graficoguilherme.png')
+fig_gustavo = graficos.make_gustavo_plot(df)
+fig_gustavo.savefig('graficos/graficogustavo.png')
+fig_joao = graficos.make_plot_joao(df)
+fig_joao.savefig('graficos/graficojoao.png')

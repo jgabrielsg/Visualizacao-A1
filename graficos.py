@@ -127,6 +127,7 @@ def make_gustavo_plot(df):
     """
 
     # Cria uma cópia das colunas necessáras do dataframe
+    df_copia = df.copy()
     df_copia = filtrar_colunas(df, "Data da Deflagracao", "Area")
 
     #Deixando mais curtos os títulos para que a legenda seja mais legível
