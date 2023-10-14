@@ -172,39 +172,6 @@
 </div>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="joao.graph_currency">
-<span class="sig-prename descclassname"><span class="pre">joao.</span></span><span class="sig-name descname"><span class="pre">graph_currency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#joao.graph_currency" title="Link to this definition">¶</a></dt>
-<dd><p>Formata valores em milhões para uso em legendas de gráficos.</p>
-<p>Esta função formata o valor para exibir em formato de moeda, indicando milhões
-se o valor for maior ou igual a 1 milhão.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> (<em>int</em>) – O valor a ser formatado.</p></li>
-<li><p><strong>pos</strong> (<em>int</em>) – Argumento obrigatório da função FuncFormatter.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Retorno<span class="colon">:</span></dt>
-<dd class="field-even"><p>A representação formatada do valor em milhões, no formato «$X.XXM» se o valor
-for maior ou igual a 1 milhão, caso contrário, no formato «$X».</p>
-</dd>
-<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<p>Exemplo de uso:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_currency</span><span class="p">(</span><span class="mi">1500000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="go">&#39;$1.5M&#39;</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_currency</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="go">&#39;$50&#39;</span>
-</pre></div>
-</div>
-</dd></dl>
-
 </section>
 
 
@@ -223,7 +190,6 @@ for maior ou igual a 1 milhão, caso contrário, no formato «$X».</p>
 <li class="toctree-l2"><a class="reference internal" href="#funcoes.filtrar_estado"><code class="docutils literal notranslate"><span class="pre">filtrar_estado()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#funcoes.contar_repeticoes"><code class="docutils literal notranslate"><span class="pre">contar_repeticoes()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#funcoes.valores_unicos"><code class="docutils literal notranslate"><span class="pre">valores_unicos()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#joao.graph_currency"><code class="docutils literal notranslate"><span class="pre">graph_currency()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graficos.html">Gráficos</a></li>

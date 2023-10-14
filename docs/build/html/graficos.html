@@ -40,8 +40,8 @@
   <section id="graficos">
 <h1>Gráficos<a class="headerlink" href="#graficos" title="Link to this heading">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="gustavo.make_gustavo_plot">
-<span class="sig-prename descclassname"><span class="pre">gustavo.</span></span><span class="sig-name descname"><span class="pre">make_gustavo_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gustavo.make_gustavo_plot" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="graficos.make_gustavo_plot">
+<span class="sig-prename descclassname"><span class="pre">graficos.</span></span><span class="sig-name descname"><span class="pre">make_gustavo_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graficos.make_gustavo_plot" title="Link to this definition">¶</a></dt>
 <dd><p>Cria um stackplot das operações policiais ao longo do tempo</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
@@ -57,8 +57,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="joao.make_plot_joao">
-<span class="sig-prename descclassname"><span class="pre">joao.</span></span><span class="sig-name descname"><span class="pre">make_plot_joao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#joao.make_plot_joao" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="graficos.make_plot_joao">
+<span class="sig-prename descclassname"><span class="pre">graficos.</span></span><span class="sig-name descname"><span class="pre">make_plot_joao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graficos.make_plot_joao" title="Link to this definition">¶</a></dt>
 <dd><p>Cria um gráfico de barras que exibe os valores apreendidos por estado em 2022.</p>
 <p>Esta função recebe um DataFrame contendo os dados de valores apreendidos por estado e
 gera um gráfico de barras que mostra os valores apreendidos por estado em 2022.</p>
@@ -83,8 +83,8 @@ gera um gráfico de barras que mostra os valores apreendidos por estado em 2022.
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="guilherme.make_plot_guilherme">
-<span class="sig-prename descclassname"><span class="pre">guilherme.</span></span><span class="sig-name descname"><span class="pre">make_plot_guilherme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guilherme.make_plot_guilherme" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="graficos.make_plot_guilherme">
+<span class="sig-prename descclassname"><span class="pre">graficos.</span></span><span class="sig-name descname"><span class="pre">make_plot_guilherme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graficos.make_plot_guilherme" title="Link to this definition">¶</a></dt>
 <dd><p>Cria um gráfico de barras que exibe de forma comparativa os valores apreendidos em territórios indigenas e não-indigenas por estado.</p>
 <p>Esta função recebe um DataFrame contendo os dados de valores apreendidos por estado e
 gera um gráfico de barras que mostra os valores apreendidos por estado em territórios indigenas e não-indigenas.</p>
@@ -99,20 +99,63 @@ gera um gráfico de barras que mostra os valores apreendidos por estado em terri
 <dd class="field-odd"><p>Figure</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>Exemplo de uso:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">collect_data</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_plot_guilherme</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;graficos/graficoguilherme.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="vinicius.make_vinicius_plot">
-<span class="sig-prename descclassname"><span class="pre">vinicius.</span></span><span class="sig-name descname"><span class="pre">make_vinicius_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vinicius.make_vinicius_plot" title="Link to this definition">¶</a></dt>
-<dd><p>Cria um gráfico sobre a quantidade de apreensões por estado em 2022.</p>
+<dt class="sig sig-object py" id="graficos.make_plot_vinicius">
+<span class="sig-prename descclassname"><span class="pre">graficos.</span></span><span class="sig-name descname"><span class="pre">make_plot_vinicius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graficos.make_plot_vinicius" title="Link to this definition">¶</a></dt>
+<dd><p>Cria um gráfico de barras que exibe a quantidade de apreensões por estado em 2022.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Retorno<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Um objeto de figura do Matplotlib contendo o gráfico gerado.</p>
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – O DataFrame contendo os dados dos valores apreendidos por estado.</p>
 </dd>
-<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
-<dd class="field-even"><p>Figure</p>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Um objeto de figura do Matplotlib contendo o gráfico gerado.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Figure</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graficos.graph_currency">
+<span class="sig-prename descclassname"><span class="pre">graficos.</span></span><span class="sig-name descname"><span class="pre">graph_currency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graficos.graph_currency" title="Link to this definition">¶</a></dt>
+<dd><p>Formata valores em milhões para uso em legendas de gráficos.</p>
+<p>Esta função formata o valor para exibir em formato de moeda, indicando milhões
+se o valor for maior ou igual a 1 milhão.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>int</em>) – O valor a ser formatado.</p></li>
+<li><p><strong>pos</strong> (<em>int</em>) – Argumento obrigatório da função FuncFormatter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>A representação formatada do valor em milhões, no formato «$X.XXM» se o valor
+for maior ou igual a 1 milhão, caso contrário, no formato «$X».</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Exemplo de uso:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_currency</span><span class="p">(</span><span class="mi">1500000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&#39;$1.5M&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_currency</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&#39;$50&#39;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -129,10 +172,11 @@ gera um gráfico de barras que mostra os valores apreendidos por estado em terri
           <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="funcoes.html">Funções</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gráficos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#gustavo.make_gustavo_plot"><code class="docutils literal notranslate"><span class="pre">make_gustavo_plot()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#joao.make_plot_joao"><code class="docutils literal notranslate"><span class="pre">make_plot_joao()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#guilherme.make_plot_guilherme"><code class="docutils literal notranslate"><span class="pre">make_plot_guilherme()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vinicius.make_vinicius_plot"><code class="docutils literal notranslate"><span class="pre">make_vinicius_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graficos.make_gustavo_plot"><code class="docutils literal notranslate"><span class="pre">make_gustavo_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graficos.make_plot_joao"><code class="docutils literal notranslate"><span class="pre">make_plot_joao()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graficos.make_plot_guilherme"><code class="docutils literal notranslate"><span class="pre">make_plot_guilherme()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graficos.make_plot_vinicius"><code class="docutils literal notranslate"><span class="pre">make_plot_vinicius()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graficos.graph_currency"><code class="docutils literal notranslate"><span class="pre">graph_currency()</span></code></a></li>
 </ul>
 </li>
 </ul>

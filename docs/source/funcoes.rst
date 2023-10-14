@@ -10,5 +10,3 @@ Funções
 .. autofunction:: funcoes.contar_repeticoes
 
 .. autofunction:: funcoes.valores_unicos
-
-.. autofunction:: joao.graph_currency

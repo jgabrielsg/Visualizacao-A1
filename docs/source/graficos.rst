@@ -1,10 +1,12 @@
 Gráficos
 ----------------
 
-.. autofunction:: gustavo.make_gustavo_plot
+.. autofunction:: graficos.make_gustavo_plot
 
-.. autofunction:: joao.make_plot_joao
+.. autofunction:: graficos.make_plot_joao
 
-.. autofunction:: guilherme.make_plot_guilherme
+.. autofunction:: graficos.make_plot_guilherme
 
-.. autofunction:: vinicius.make_vinicius_plot
+.. autofunction:: graficos.make_plot_vinicius
+
+.. autofunction:: graficos.graph_currency
