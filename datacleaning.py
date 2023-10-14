@@ -1,5 +1,4 @@
 import pandas as pd
-from funcoes import arrumar_tipos, remover_espaços, arrumar_escrita
 
 pd.set_option('display.max_columns', None)
 
@@ -38,7 +37,6 @@ def clean_data(df):
     df.dropna(axis=1, how='all', inplace=True)
 
     df = arrumar_tipos(df)
-    df = remover_espaços(df)
     df = arrumar_escrita(df)
 
     return df
@@ -49,3 +47,77 @@ def format_currency(value):
         return "${:,.2f}M".format(value)
     else:
         return 0.0
+    
+def arrumar_tipos(df):
+    """Funcao que retorna um dataframe com os tipos de dados das colunas adequados.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame inicial com os dados lidos.
+
+    Returns
+    -------
+    pandas.DataFrame
+       DataFrame com os tipos corrigidos
+    """
+
+    df_copia = df
+    colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
+    colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
+
+    # Arruma os tipos das colunas de data
+    for coluna in colunas_datas:
+        try:
+            df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
+        except KeyError as erro:
+            print("A coluna:", coluna, ", não está presente no dataframe!")
+        except Exception as erro:
+            print("Não foi possível converter a coluna", coluna, "em data!")
+
+    # Arruma os tipos das colunas de valores monetários
+    for coluna in colunas_dinheiro:
+        try: 
+            mask = df[coluna].notna()
+            df.loc[mask, coluna] = df.loc[mask, coluna].str.replace('R$', '', regex=False).str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
+            df[coluna] = df[coluna].fillna(0).astype(float)
+        except KeyError as erro:
+            print("A coluna:", coluna, ", não está presente no dataframe!")
+        except Exception as erro:
+            print("Não foi possível converter a coluna", coluna, "em float!")
+
+    return df_copia
+
+def arrumar_escrita(df, coluna = "Area"):
+    """
+    Função que arruma bugs do dataframe em específico, em que, somente em algumas linhas caractéres como "á" estão bugados.
+    Exemplo: "Fraudes Bancï¿½rias" ao invés de "Fraudes Bancárias"
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame com a coluna "Area" não corrigida
+    coluna : str
+        Coluna que vai ser corrigida, normalmente a coluna "Area".
+    Returns
+    -------
+    pandas.DataFrame
+        O data frame com a coluna especificada arrumada.
+    """
+    df_copia = df
+
+    nome_correto = {"Crimes de ï¿½dio e Pornografia Infantil": "Crimes de Ódio e Pornografia Infantil",
+                    "Fraudes Bancï¿½rias": "Fraudes Bancárias",
+                    "Trï¿½fico de Drogas": "Tráfico de Drogas",
+                    "Crimes Fazendï¿½rios": "Crimes Fazendários",
+                    "Crimes Contra o Patrimï¿½nio": "Crimes Contra o Patrimônio",
+                    "Crimes de Corrupï¿½ï¿½o": "Crimes de Corrupção",
+                    "Crimes Previdenciï¿½rios": "Crimes Previdenciários",
+                    "Trï¿½fico de Armas": "Tráfico de Armas",
+                    "Crimes Ambientais e Contra o Patrimï¿½nio Cultural": "Crimes Ambientais e Contra o Patrimônio Cultural"}
+
+    try:
+        df_copia[coluna] = df_copia[coluna].replace(nome_correto)
+    except Exception:
+        print("Não deu para arrumar os nomes da coluna 'Area': ", coluna)
+
+    return df_copia

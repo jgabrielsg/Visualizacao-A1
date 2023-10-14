@@ -35,54 +35,6 @@ def collect_data(pasta = 'dados'):
 
     return df
 
-def arrumar_tipos(df):
-    """Funcao que retorna um dataframe com os tipos de dados das colunas adequados.
-
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        DataFrame inicial com os dados lidos.
-
-    Returns
-    -------
-    pandas.DataFrame
-       DataFrame com os tipos corrigidos
-    """
-
-    df_copia = df
-
-    colunas_datas = ["Data do Inicio", "Data da Deflagracao"]
-    colunas_dinheiro = ["Qtd Valores Apreendidos", "Qtd Valores Descapitalizados", "Qtd Prejuizos Causados a Uniao"]
-
-
-    # Arruma os tipos das colunas de data
-    for coluna in colunas_datas:
-        try:
-            df_copia[coluna] = pd.to_datetime(df_copia[coluna], format='%d/%m/%Y')
-
-        except KeyError as erro:
-            print("!! ERRO !!\n")
-            print("A coluna:", coluna, ", não está presente no dataframe!\n")
-            print(type(erro), erro.__class__.mro())
-
-    # Arruma os tipos das colunas de valores monetários
-    for coluna in colunas_dinheiro:
-        try: 
-            mask = df[coluna].notna()
-            df.loc[mask, coluna] = df.loc[mask, coluna].str.replace('R$', '', regex=False).str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
-            df[coluna] = df[coluna].fillna(0).astype(float)
-        
-        except KeyError as erro:
-            print("!! ERRO !!\n")
-            print("A coluna:", coluna, ", não está presente no dataframe!\n")
-            print(type(erro), erro.__class__.mro())
-
-        except Exception as erro:
-            print("!! Erro !!\n")
-            print(type(erro), erro.__class__.mro(), end ="\n\n")
-
-    return df_copia
-
 def filtrar_colunas(df, *colunas):
     """Recebe um DataFrame Pandas e retorna um novo com as colunas desejadas.
 
@@ -226,7 +178,7 @@ def valores_unicos(df, coluna):
         print(f"Ocorreu um erro ao buscar valores únicos:")
         print(type(erro), erro.__class__.mro(), end ="\n\n")
     
-def remover_espaços(df, coluna = "Area"):
+def remover_espacos(df, coluna = "Area"):
     """
     Função que remove os espaços extras que existem na coluna "Area" do dataframe, ou outra coluna se especificada.
 

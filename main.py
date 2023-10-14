@@ -1,11 +1,11 @@
 import funcoes
-from datacleaning import clean_data
+import datacleaning
 from gustavo import make_gustavo_plot
 from vinicius import make_vinicius_plot
 
 df = funcoes.collect_data()
 
-df = clean_data(df)
+df = datacleaning.clean_data(df)
 
 make_gustavo_plot(df)
 make_vinicius_plot()

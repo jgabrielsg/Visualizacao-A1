@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from funcoes import collect_data, arrumar_tipos, filtrar_colunas, contar_repeticoes
 from datacleaning import clean_data
 
-
 def make_plot_guilherme(df):
     """Cria um gráfico de barras que exibe de forma comparativa os valores apreendidos em territórios indigenas e não-indigenas por estado.
 
@@ -22,6 +21,7 @@ def make_plot_guilherme(df):
     Figure
         Um objeto de figura do Matplotlib contendo o gráfico gerado.
     """
+    
     df_copia = filtrar_colunas(df, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()
 
     #Remove os estados sem atuação em território indigena
@@ -44,7 +44,6 @@ def make_plot_guilherme(df):
     plt.legend(legenda, title='Atuação em território indigena', title_fontsize=10, fontsize=8)
     
     return plt
-    
 
 if __name__ == "__main__":
     fig = make_plot_guilherme(clean_data(collect_data()))
