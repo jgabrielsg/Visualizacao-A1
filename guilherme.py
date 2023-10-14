@@ -47,5 +47,5 @@ def make_plot_guilherme(df):
 if __name__ == "__main__":
     df = clean_data(collect_data())
     fig = make_plot_guilherme(df)
-    fig.show()
+    # fig.show()
     fig.savefig('graficos/graficoguilherme.png')

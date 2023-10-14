@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from funcoes import filtrar_colunas, remover_espacos
+from funcoes import filtrar_colunas
 from funcoes import collect_data
 from datacleaning import clean_data
 import matplotlib.pyplot as plt
@@ -20,8 +20,7 @@ def make_gustavo_plot(df):
     """
 
     # Cria uma cópia das colunas necessáras do dataframe
-    df_copia = remover_espacos(df)
-    df_copia = filtrar_colunas(df_copia, "Data da Deflagracao", "Area")
+    df_copia = filtrar_colunas(df, "Data da Deflagracao", "Area")
 
     # print(df_copia["Area"].unique())
 
