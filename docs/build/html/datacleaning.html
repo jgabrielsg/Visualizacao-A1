@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="pt" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo de limpeza &#8212; Documentação A1-Linguagem de Programação 1.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/agogo.css?v=47acb022" />
+    <script src="_static/documentation_options.js?v=bbb231ee"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=3b002d5c"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="prev" title="Gráficos" href="graficos.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="index.html">Documentação A1-Linguagem de Programação 1.0</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="graficos.html" title="Gráficos"
+             accesskey="P">anterior</a> |
+          <a href="py-modindex.html" title="Índice de Módulos do Python"
+             >módulos</a> |
+          <a href="genindex.html" title="Índice Geral"
+             accesskey="I">índice</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-datacleaning">
+<span id="modulo-de-limpeza"></span><h1>Módulo de limpeza<a class="headerlink" href="#module-datacleaning" title="Link to this heading">¶</a></h1>
+<p>Módulo que faz a limpeza da base de dados e contém funções específicas para isso.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="datacleaning.clean_data">
+<span class="sig-prename descclassname"><span class="pre">datacleaning.</span></span><span class="sig-name descname"><span class="pre">clean_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacleaning.clean_data" title="Link to this definition">¶</a></dt>
+<dd><p>Recebe o dataframe e limpa ele, corrigindo tipos e colunas e linhas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Dataframe ainda «sujo»</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataframe com as correções</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacleaning.arrumar_tipos">
+<span class="sig-prename descclassname"><span class="pre">datacleaning.</span></span><span class="sig-name descname"><span class="pre">arrumar_tipos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacleaning.arrumar_tipos" title="Link to this definition">¶</a></dt>
+<dd><p>Funcao que retorna um dataframe com os tipos de dados das colunas adequados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame inicial com os dados lidos.</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame com os tipos corrigidos</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datacleaning.arrumar_escrita">
+<span class="sig-prename descclassname"><span class="pre">datacleaning.</span></span><span class="sig-name descname"><span class="pre">arrumar_escrita</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coluna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Area'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datacleaning.arrumar_escrita" title="Link to this definition">¶</a></dt>
+<dd><p>Função que arruma bugs do dataframe em específico, em que, somente em algumas linhas caractéres como «á» estão bugados.
+Exemplo: «Fraudes Bancï¿½rias» ao invés de «Fraudes Bancárias»
+:param df: DataFrame com a coluna «Area» não corrigida
+:type df: pandas.DataFrame
+:param coluna: Coluna que vai ser corrigida, normalmente a coluna «Area».
+:type coluna: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O data frame com a coluna especificada arrumada.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">datacleaning.</span></span><span class="sig-name descname"><span class="pre">clean_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd><p>Recebe o dataframe e limpa ele, corrigindo tipos e colunas e linhas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Dataframe ainda «sujo»</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataframe com as correções</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="funcoes.html">Funções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graficos.html">Gráficos</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulo de limpeza</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#datacleaning.clean_data"><code class="docutils literal notranslate"><span class="pre">clean_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datacleaning.arrumar_tipos"><code class="docutils literal notranslate"><span class="pre">arrumar_tipos()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datacleaning.arrumar_escrita"><code class="docutils literal notranslate"><span class="pre">arrumar_escrita()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">clean_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Pesquisar</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Ir" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="graficos.html" title="Gráficos"
+              >anterior</a> |
+            <a href="py-modindex.html" title="Índice de Módulos do Python"
+              >módulos</a> |
+            <a href="genindex.html" title="Índice Geral"
+              >índice</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="_sources/datacleaning.rst.txt"
+                rel="nofollow">Exibir Fonte</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Guris do Sul Corporation.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

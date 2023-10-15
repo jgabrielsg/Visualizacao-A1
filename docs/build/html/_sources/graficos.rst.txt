@@ -1,6 +1,8 @@
 Gráficos
 ----------------
 
+.. automodule:: graficos
+
 .. autofunction:: graficos.make_gustavo_plot
 
 .. autofunction:: graficos.make_plot_joao

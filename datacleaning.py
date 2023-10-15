@@ -1,3 +1,5 @@
+"""Módulo que faz a limpeza da base de dados e contém funções específicas para isso."""
+
 import pandas as pd
 
 pd.set_option('display.max_columns', None)

@@ -1,6 +1,8 @@
 Funções
 ----------------
 
+.. automodule:: funcoes
+
 .. autofunction:: funcoes.collect_data
 
 .. autofunction:: funcoes.filtrar_colunas

@@ -1,5 +1,5 @@
-Welcome to A1-Linguagem de Programação's documentation!
-=======================================================
+Bem-Vindo à documentação do trabalho de Vizualização de LP
+===========================================================
 
 .. toctree::
    :maxdepth: 2
@@ -12,9 +12,10 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Contents
+Módulos:
 --------
 
 .. toctree::
    funcoes
    graficos
+   datacleaning

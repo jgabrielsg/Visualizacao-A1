@@ -1,3 +1,5 @@
+"""Módulo que contém as funções que criam os gráficos de cada aluno."""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

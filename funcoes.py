@@ -1,3 +1,5 @@
+"""Módulo que contém as funções com utilidade generalizada."""
+
 import pandas as pd
 import os
 
