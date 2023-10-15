@@ -97,6 +97,7 @@ def arrumar_escrita(df, coluna = "Area"):
     """
     Função que arruma bugs do dataframe em específico, em que, somente em algumas linhas caractéres como "á" estão bugados.
     Exemplo: "Fraudes Bancï¿½rias" ao invés de "Fraudes Bancárias"
+    
     Parameters
     ----------
     df : pandas.DataFrame
