@@ -8,5 +8,3 @@ Módulo de limpeza
 .. autofunction:: datacleaning.arrumar_tipos
 
 .. autofunction:: datacleaning.arrumar_escrita
-
-.. autofunction:: datacleaning.clean_data
