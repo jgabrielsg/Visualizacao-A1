@@ -60,7 +60,8 @@ def make_plot_vinicius(df):
     plt.legend(loc = "lower right")
 
     # Personalização do gráfico
-    plt.xlabel("Quantidade")
+    plt.style.use("Solarize_Light2")
+    plt.xlabel("Quantidade de Apreensões")
     plt.ylabel("Estados")
     plt.title("Quantidade de Apreensões por Estado")
     plt.grid(axis = "x", linestyle = "--", alpha=0.6)
