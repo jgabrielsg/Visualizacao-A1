@@ -6,6 +6,19 @@ from datacleaning import clean_data
 from matplotlib.ticker import FuncFormatter
 
 def criar_dataframe_guilherme(df):
+    """Gera um dataframe para analise e visualização.   
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame original limpo após ser retirado do site do governo federal e tratado.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Tabela dinâmica baseada na média das quantidades apreendidas 
+        em território indigena e não indigena para um estado
+    """
     #Previne que o df original seja modificado.
     df_copia = df.copy()
     df_copia = filtrar_colunas(df_copia, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa')
