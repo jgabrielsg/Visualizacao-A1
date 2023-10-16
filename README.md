@@ -14,3 +14,6 @@ Link para o site: https://visualizacaoa1.netlify.app/
 
 ![image](https://github.com/jgabrielsg/Visualizacao-A1/assets/126505004/99edfce9-1943-46e6-9dad-0f49d25a0acd)
 
+---
+
+A documentação em Sphinx está no path: ```docs/build/html/index.html```
