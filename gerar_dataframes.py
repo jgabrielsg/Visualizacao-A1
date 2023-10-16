@@ -19,17 +19,21 @@ def criar_dataframe_guilherme(df):
         Tabela dinâmica baseada na média das quantidades apreendidas 
         em território indigena e não indigena para um estado
     """
-    #Previne que o df original seja modificado.
-    df_copia = df.copy()
-    df_copia = filtrar_colunas(df_copia, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa')
+    try:
+        #Previne que o df original seja modificado.
+        df_copia = df.copy()
+        df_copia = filtrar_colunas(df_copia, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa')
 
-    #Remove os estados sem atuação em território indigena.
-    estados_ap_ind = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
-    df_ap_ind = df_copia[df_copia['Sigla Unidade Federativa'].isin(estados_ap_ind)]
+        #Remove os estados sem atuação em território indigena.
+        estados_ap_ind = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
+        df_ap_ind = df_copia[df_copia['Sigla Unidade Federativa'].isin(estados_ap_ind)]
 
-    df_agrupado = df_ap_ind.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
-    df_pivot = df_agrupado.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
-
+        df_agrupado = df_ap_ind.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
+        df_pivot = df_agrupado.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
+    except Exception as erro:
+        print("Erro! DataFrame não é valido para visualização da função!")
+        print(type(erro), erro.__class__.mro(), end ="\n\n")
+        df_pivot = {}
     return df_pivot
 
 def criar_dataframe_gustavo(df):
