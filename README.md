@@ -16,4 +16,4 @@ Link para o site: https://visualizacaoa1.netlify.app/
 
 ---
 
-A documentação em Sphinx está no path: ```docs/build/html/index.html```
+A documentação em Sphinx está em uma página do html e no path: ```docs/build/html/index.html```

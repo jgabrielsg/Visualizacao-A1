@@ -19,7 +19,7 @@ def criar_dataframe_guilherme(df):
     -------
     pandas.DataFrame
         Tabela dinâmica baseada na média das quantidades apreendidas 
-        em território indigena e não indigena para um estado
+        em território indigena e não indigena para um estado.
     """
     try:
         #Previne que o df original seja modificado.
@@ -39,6 +39,18 @@ def criar_dataframe_guilherme(df):
     return df_pivot
 
 def criar_dataframe_gustavo(df):
+    """Gera um dataframe para analise e visualização.   
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame original limpo após ser retirado do site do governo federal e tratado.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Retorna um DataFrame contendo a quantidade de operações categorizadas em área de atuação por mês.
+    """
     try:
         # Cria uma cópia das colunas necessáras do dataframe
         df_copia_gustavo = df.copy()
@@ -66,6 +78,18 @@ def criar_dataframe_gustavo(df):
     return grouped
 
 def criar_dataframe_joao(df):
+    """Gera um dataframe para analise e visualização.   
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame original limpo após ser retirado do site do governo federal e tratado.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Retorna um DataFrame contendo o total de valores apreendidos por estado.
+    """
     try:
         df_copia_joao = df.copy()
         df_estados_joao = df_copia_joao.groupby('Sigla Unidade Federativa')['Qtd Valores Apreendidos'].sum().reset_index()
@@ -78,6 +102,18 @@ def criar_dataframe_joao(df):
     return df_estados_joao
 
 def criar_dataframe_vinicius(df):
+    """Gera um dataframe para analise e visualização.   
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame original limpo após ser retirado do site do governo federal e tratado.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Retorna um DataFrame contendo a quantidade de apreenções por estado.
+    """
     try:
         df_copia_vinicius = df.copy()
         df_estados_vinicius = filtrar_colunas(df_copia_vinicius, "Sigla Unidade Federativa")

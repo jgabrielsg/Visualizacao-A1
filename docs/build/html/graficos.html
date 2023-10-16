@@ -14,17 +14,17 @@
     <script src="_static/translations.js?v=3b002d5c"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Pesquisar" href="search.html" />
-    <link rel="next" title="Módulo de limpeza" href="datacleaning.html" />
-    <link rel="prev" title="Funções" href="funcoes.html" /> 
+    <link rel="next" title="Criação dos DataFrames" href="dataframes.html" />
+    <link rel="prev" title="Módulo de limpeza" href="datacleaning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Documentação A1-Linguagem de Programação 1.0</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="funcoes.html" title="Funções"
-             accesskey="P">anterior</a> |
           <a href="datacleaning.html" title="Módulo de limpeza"
+             accesskey="P">anterior</a> |
+          <a href="dataframes.html" title="Criação dos DataFrames"
              accesskey="N">próximo</a> |
           <a href="py-modindex.html" title="Índice de Módulos do Python"
              >módulos</a> |
@@ -54,10 +54,14 @@
 <dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – O DataFrame com os dados necessários.</p>
 </dd>
 <dt class="field-even">Retorno<span class="colon">:</span></dt>
-<dd class="field-even"><p>Um objeto de figura do Matplotlib contendo o gráfico gerado.</p>
-</dd>
-<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Figure</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Figure</em> – Um objeto de figura do Matplotlib contendo o gráfico gerado.</p></li>
+<li><p><em>&gt;&gt;&gt; df = clean_data(collect_data())</em></p></li>
+<li><p><em>&gt;&gt;&gt; df_gustavo = gerar_dataframes.criar_dataframe_gustavo(df)</em></p></li>
+<li><p><em>&gt;&gt;&gt; fig = make_plot_gustavo(df_gustavo)</em></p></li>
+<li><p><em>&gt;&gt;&gt; fig.savefig(“graficos/graficogustavo.png”)</em></p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -82,7 +86,8 @@ gera um gráfico de barras que mostra os valores apreendidos por estado em 2022.
 <p class="rubric">Example</p>
 <p>Exemplo de uso:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">collect_data</span><span class="p">())</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_plot_joao</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_joao</span> <span class="o">=</span> <span class="n">gerar_dataframes</span><span class="o">.</span><span class="n">criar_dataframe_joao</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_plot_joao</span><span class="p">(</span><span class="n">df_joao</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;graficos/graficojoao.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -108,7 +113,8 @@ gera um gráfico de barras que mostra os valores apreendidos por estado em terri
 <p class="rubric">Example</p>
 <p>Exemplo de uso:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">collect_data</span><span class="p">())</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_plot_guilherme</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_guilherme</span> <span class="o">=</span> <span class="n">gerar_dataframes</span><span class="o">.</span><span class="n">criar_dataframe_guilherme</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_plot_guilherme</span><span class="p">(</span><span class="n">df_guilherme</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;graficos/graficoguilherme.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -129,6 +135,14 @@ gera um gráfico de barras que mostra os valores apreendidos por estado em terri
 <dd class="field-odd"><p>Figure</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>Exemplo de uso:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">collect_data</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_vinicius</span> <span class="o">=</span> <span class="n">gerar_dataframes</span><span class="o">.</span><span class="n">criar_dataframe_vinicius</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_plot_vinicius</span><span class="p">(</span><span class="n">df_vinicius</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;graficos/graficovinicius.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -177,6 +191,7 @@ for maior ou igual a 1 milhão, caso contrário, no formato «$X».</p>
           <h3>Table of Contents</h3>
           <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="funcoes.html">Funções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacleaning.html">Módulo de limpeza</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gráficos</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#graficos.make_gustavo_plot"><code class="docutils literal notranslate"><span class="pre">make_gustavo_plot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#graficos.make_plot_joao"><code class="docutils literal notranslate"><span class="pre">make_plot_joao()</span></code></a></li>
@@ -185,7 +200,7 @@ for maior ou igual a 1 milhão, caso contrário, no formato «$X».</p>
 <li class="toctree-l2"><a class="reference internal" href="#graficos.graph_currency"><code class="docutils literal notranslate"><span class="pre">graph_currency()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="datacleaning.html">Módulo de limpeza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">Criação dos DataFrames</a></li>
 </ul>
 
           <div role="search">
@@ -205,9 +220,9 @@ for maior ou igual a 1 milhão, caso contrário, no formato «$X».</p>
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="funcoes.html" title="Funções"
-              >anterior</a> |
             <a href="datacleaning.html" title="Módulo de limpeza"
+              >anterior</a> |
+            <a href="dataframes.html" title="Criação dos DataFrames"
               >próximo</a> |
             <a href="py-modindex.html" title="Índice de Módulos do Python"
               >módulos</a> |

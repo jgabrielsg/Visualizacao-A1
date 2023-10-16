@@ -17,5 +17,6 @@ Módulos:
 
 .. toctree::
    funcoes
-   graficos
    datacleaning
+   dataframes
+   graficos
