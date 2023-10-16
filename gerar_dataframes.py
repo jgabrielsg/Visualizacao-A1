@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from funcoes import collect_data, filtrar_colunas, contar_repeticoes, criar_df_guilherme
+from funcoes import collect_data, filtrar_colunas, contar_repeticoes
 from datacleaning import clean_data
 from matplotlib.ticker import FuncFormatter
 
@@ -16,8 +16,6 @@ def criar_dataframe_guilherme(df):
 
     df_agrupado = df_ap_ind.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
     df_pivot = df_agrupado.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
-    
-    df_pivot.to_csv('dados/df_guilherme.csv')
 
     return df_pivot
 
@@ -42,8 +40,6 @@ def criar_dataframe_gustavo(df):
 
     grouped = grouped.loc[contagem_area[:10]]
 
-    grouped.to_csv('dados/df_gustavo.csv')
-
     return grouped
 
 def criar_dataframe_joao(df):
@@ -52,8 +48,6 @@ def criar_dataframe_joao(df):
     df_estados_joao = df_estados_joao.rename(columns={'Qtd Valores Apreendidos': 'Total Valores Apreendidos'})
     df_estados_joao = df_estados_joao.sort_values(by='Total Valores Apreendidos', ascending=True)
 
-    df_estados_joao.to_csv('dados/df_joao.csv')
-
     return df_estados_joao
 
 def criar_dataframe_vinicius(df):
@@ -61,8 +55,6 @@ def criar_dataframe_vinicius(df):
     df_estados_vinicius = filtrar_colunas(df_copia_vinicius, "Sigla Unidade Federativa")
     df_estados_vinicius = contar_repeticoes(df_estados_vinicius, "Sigla Unidade Federativa")
     df_estados_vinicius = df_estados_vinicius.rename_axis(index = "ESTADOS")
-    
-    df_estados_vinicius.to_csv('dados/df_vinicius.csv')
 
     return df_estados_vinicius
 
