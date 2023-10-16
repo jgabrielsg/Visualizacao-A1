@@ -29,6 +29,9 @@ def make_plot_vinicius(df):
     >>> fig.savefig('graficos/graficovinicius.png')
     """
 
+    #Definindo o estilo do gráfico
+    plt.style.use("Solarize_Light2")
+
     # Plotagem do gráfico
     regioes_cores = {"Norte": (["AC", "AM", "AP", "PA", "RO", "RR", "TO"], "green"),
                     "Nordeste": (["AL", "BA", "CE", "MA", "PB", "PE", "PI", "RN", "SE"], "red"),
@@ -43,7 +46,7 @@ def make_plot_vinicius(df):
         estado = df.index[num]
         for regiao, (siglas, cor) in regioes_cores.items():
             if estado in siglas:
-                barra.set_color(cor)
+                barra.set_color(cor) # Separação por cores de acordo com a região
 
         largura = barra.get_width()
         porcentagem = (largura / total_soma) * 100
@@ -51,6 +54,7 @@ def make_plot_vinicius(df):
             plt.text(largura + 10, barra.get_y() + barra.get_height() / 2, f"{porcentagem:.2f}%", ha = "left",
                     va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing = 0.9)
         else:
+            # Aqui, coloquei as porcentagem para "dentro" da barra, pois antes elas estavam atravessando o limite do gráfico.
             plt.text(largura - 70, barra.get_y() + barra.get_height() / 2, f"{porcentagem:.2f}%", ha = "center",
                     va = "center", fontsize=8, fontweight = "bold", color = "#010101", linespacing = 0.9)
 
@@ -60,7 +64,6 @@ def make_plot_vinicius(df):
     plt.legend(loc = "lower right")
 
     # Personalização do gráfico
-    plt.style.use("Solarize_Light2")
     plt.xlabel("Quantidade de Apreensões")
     plt.ylabel("Estados")
     plt.title("Quantidade de Apreensões por Estado")
