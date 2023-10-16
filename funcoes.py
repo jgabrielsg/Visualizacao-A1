@@ -180,16 +180,3 @@ def valores_unicos(df, coluna):
     except Exception as erro:
         print(f"Ocorreu um erro ao buscar valores únicos:")
         print(type(erro), erro.__class__.mro(), end ="\n\n")
-
-def criar_df_guilherme(df_original):
-    df_copia = filtrar_colunas(df_original, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa').copy()
-
-    #Remove os estados sem atuação em território indigena
-    df_copia = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
-    df_copia = df_copia[df_copia['Sigla Unidade Federativa'].isin(df_copia)]
-
-    df_copia = df_copia.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
-
-    df_guilherme = df_copia.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
-    
-    return df_guilherme
