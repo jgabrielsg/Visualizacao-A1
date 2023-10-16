@@ -36,7 +36,7 @@ class DFTests(unittest.TestCase):
     def test_valores_unicos(self):
         self.gabarito = ['RR', 'MG', 'PI', 'RS', 'PR', 'MS', 'RJ', 'AC', 'AM', 'CE', 'GO', 'SP', 'RO', 'PE', 'BA', 'MT', 'ES', 'PA', 'SE', 'AL', 'SC', 'PB', 'DF', 'RN', 'TO', 'MA', 'AP']
         self.resultado = valores_unicos(collect_data(), "Sigla Unidade Federativa")
-        self.assertTrue(self.gabarito.equals(self.resultado))
+        self.assertEqual(self.gabarito, self.resultado)
 
 if __name__ == '__main__':
     unittest.main()
