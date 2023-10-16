@@ -18,6 +18,7 @@ def clean_data(df):
         Dataframe com as correções
     """
 
+    # Aqui tiraremos do Dataframe colunas que não usaremos nas análises
     colunas_nao_utilizadas = ["Monit Eletronica",
                               "Recol Domic Noturno",
                               "Qtd Internacao Prov",
@@ -48,6 +49,25 @@ def clean_data(df):
     return df
 
 def format_currency(value):
+    """Formata os valores para números em milhões de reais
+
+    Parameters
+    ----------
+    value : int
+        Valor inicial, ainda em número
+
+    Returns
+    -------
+    str
+        Temos o valor formatado para dinheiro, facilitando a visualização em gráficos
+
+    Example
+    -------
+    Exemplo de uso:
+
+    >>> format_currency(20550000)
+    '$20.55M'
+    """
     if pd.notna(value):
         value = value/1000000
         return "${:,.2f}M".format(value)

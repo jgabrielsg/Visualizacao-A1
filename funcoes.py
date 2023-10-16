@@ -28,6 +28,7 @@ def collect_data(pasta = 'dados'):
 
     dataframes = []
 
+    # Coleta todos csvs da parta "dados" e coloca em um só dataframe
     for csv in arquivos_csv:
         caminho_arquivo = os.path.join(pasta, csv)
         df = pd.read_csv(caminho_arquivo, encoding='latin1', sep=";")

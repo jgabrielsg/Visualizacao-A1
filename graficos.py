@@ -179,6 +179,21 @@ def make_plot_joao(df):
     >>> fig.savefig('graficos/graficojoao.png')
     """
 
+    # Calculando a mediana
+    mediana = df['Total Valores Apreendidos'].median()
+
+    # Calculando a média
+    media = df['Total Valores Apreendidos'].mean()
+
+    # Calculando o desvio padrão
+    desvio_padrao = df['Total Valores Apreendidos'].std()
+
+    # Exibindo os resultados
+    print(f"Mediana: {mediana}")
+    print(f"Média: {media}")
+    print(f"Desvio Padrão: {desvio_padrao}")
+    
+
     colors = ['green' if i > 21 else 'gray' for i in range(len(df))]
 
     plot = plt.figure(figsize=(10, 6))
@@ -233,3 +248,4 @@ if __name__ == "__main__":
     df_joao = gerar_dataframes.criar_dataframe_joao(df)
     fig_joao = make_plot_joao(df_joao)
     fig_joao.savefig('graficos/graficojoao.png')
+    

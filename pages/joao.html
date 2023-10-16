@@ -25,16 +25,31 @@
 
     <div class="explic">
         <h2>
-            Gráfico
+            Gráfico e Análise
         </h2>
 
         <hr/>
 
         <p class="texto_explic">
-            Uma das ideias iniciais que tive com a base foi calcular a quantidade de dinheiro apreendida por estado, principalmente por que foi
-            um dos dados que achei mais interessante e inesperado de encontrar. Tive que fazer algumas limpezas na base para o gráfico funcionar,
-            já que os valores em dinheiro todos estavam como string, com os símbolos ainda. Após a limpeza, com o dataframe já filtrado, usei
-            o matplotlib e fiz o gráfico
+          Uma das ideias iniciais que tive com a base foi calcular a quantidade de dinheiro apreendida por estado, principalmente por que foi
+            um dos dados que achei mais interessante e inesperado de encontrar. Das hipóteses que tinha inicialmente era que os valores seriam próximos
+            de estado para estado, onde haveriam mais apreensões em estados como Rio de Janeiro e São Paulo por sua maior população e crime 
+            organizado. Pensei também um alto valor nos estados com fronteira, como estados do Sul e Centro-Oeste brasileiro.
+        </p>
+
+        <p class="texto_explic">
+          Em sequência, na análise, observei que há uma grande diferença entre os valores de cada estado. Somando os três estados com mais valores apreendidos 
+          (Bahia, Roraima e Rio de Janeiro) o valor é superior que a soma dos outros 24 estados (contando com o Distrito Federal). A média de todos
+          os estados foi de aproximadamente 229 milhões, o que é um valor bem alto, no entanto, a mediana é bem menor, apenas 48 milhões de reais.
+          Isso corrobora com o falado anteriormente: há muita diferença de estado para estado. O desvio padrão foi de, aproximadamente, 353 milhões.
+          A soma total de todos os valores apreendidos foi de, aproximadamente, 6 bilhões e 190 milhões.
+        </p>
+
+        <p class="texto_explic">
+          Após a análise, para demonstrar visualmente a discrepância, fiz o gráfico. Tive que fazer algumas limpezas na base para o gráfico funcionar,
+          já que os valores em dinheiro todos estavam como string, com os símbolos ainda, então para fazer as somas fiz algumas alterações. Para
+          demonstrar o que foi falado antes, decidi fazer um span nos estados com mais de 500 milhões e colocar porcentagens para facilitar o leitor
+          de perceber a discrepância entre os estados.
         </p>
 
         <div class="explic_graph">
@@ -42,10 +57,10 @@
         </div>
 
         <p class="texto_explic">
-            Imaginei que os estados do Rio de Janeiro e São Paulo teriam maior apreensão, já que são os maiores estados (e os que possuem 
-            as maiores milícias do Brasil), porém, na verdade não. Os dois maiores são, curiosamente, os estados da Bahia e de Roraima. Logo em
-            seguida vem Rio de Janeiro e São Paulo, junto com o Paraná. Foi um pouco inesperado, mas quase sempre minhas suposições acabam sendo
-            incorretas.
+            Por fim, o que havia previsto, um maior valor no RJ e em São Paulo, já que são os maiores estados (e os que possuem 
+            as maiores milícias do Brasil) não foi realidade. Os dois maiores são, curiosamente, os estados da Bahia e de Roraima. Logo em
+            seguida vem Rio de Janeiro e São Paulo, junto com o Paraná. Foi um pouco inesperado, mas acho que minha hipótese foi muito
+            superficial.
         </p>
     </div>
 
