@@ -11,6 +11,7 @@ class DFTests(unittest.TestCase):
     # elas foram pensadas para analisar uma base de dados com colunas especificas em formatos especificos, e foram criados
     # "gabaritos", que sao os dataframes que seriam o resultado correto do output da funcao.    
 
+    # Testes collect_data
     def test_collect_data(self):
         self.gabarito = pd.read_csv("testes_dados/collect_data/gabarito_1.csv", encoding='latin1', sep =";")
         self.df = collect_data('testes_dados/collect_data/dados')
@@ -26,7 +27,7 @@ class DFTests(unittest.TestCase):
         self.df =  pd.read_csv("testes_dados/clean_data/sujo.csv", encoding='utf-8', sep =";")
         assert_frame_equal(self.gabarito, clean_data(self.df))
 
-    # Teste collect_data
+    # Testes funções
     def test_filtrar_colunas(self):
         self.gabarito2 = pd.read_csv("testes_dados/filtrar_colunas/gabarito_2.csv", encoding='latin1', sep =";")
         df_original = pd.read_csv("testes_dados/filtrar_colunas/dados.csv", encoding='latin1', sep =";")
