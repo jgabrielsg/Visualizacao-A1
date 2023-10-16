@@ -180,3 +180,38 @@ def valores_unicos(df, coluna):
     except Exception as erro:
         print(f"Ocorreu um erro ao buscar valores únicos:")
         print(type(erro), erro.__class__.mro(), end ="\n\n")
+
+def graph_currency(value, pos):
+    """
+    Formata valores em milhões para uso em legendas de gráficos.
+
+    Esta função formata o valor para exibir em formato de moeda, indicando milhões
+    se o valor for maior ou igual a 1 milhão.
+
+    Parameters
+    ----------
+    value : int
+        O valor a ser formatado.
+    pos : int
+        Argumento obrigatório da função FuncFormatter.
+
+    Returns
+    -------
+    str
+        A representação formatada do valor em milhões, no formato "$X.XXM" se o valor
+        for maior ou igual a 1 milhão, caso contrário, no formato "$X".
+
+    Example
+    -------
+    Exemplo de uso:
+
+    >>> graph_currency(1500000, 0)
+    '$1.5M'
+
+    >>> graph_currency(50, 0)
+    '$50'
+    """
+    if value >= 1e6: 
+        return f'${value/1e6:.0f}M'  
+    else:
+        return f'${value:.0f}'

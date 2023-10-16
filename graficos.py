@@ -1,10 +1,9 @@
 """Módulo que contém as funções que criam os gráficos de cada aluno."""
 
-import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
-from funcoes import collect_data, filtrar_colunas, contar_repeticoes, criar_df_guilherme
+import gerar_dataframes
 from datacleaning import clean_data
+from funcoes import collect_data, graph_currency
 from matplotlib.ticker import FuncFormatter
 
 def make_plot_vinicius(df):
@@ -19,6 +18,15 @@ def make_plot_vinicius(df):
     -------
     Figure
         Um objeto de figura do Matplotlib contendo o gráfico gerado.
+
+    Example
+    -------
+    Exemplo de uso:
+
+    >>> df = clean_data(collect_data())
+    >>> df_vinicius = gerar_dataframes.criar_dataframe_vinicius(df)
+    >>> fig = make_plot_vinicius(df_vinicius)
+    >>> fig.savefig('graficos/graficovinicius.png')
     """
 
     # Plotagem do gráfico
@@ -80,7 +88,8 @@ def make_plot_guilherme(df):
     Exemplo de uso:
 
     >>> df = clean_data(collect_data())
-    >>> fig = make_plot_guilherme(df)
+    >>> df_guilherme = gerar_dataframes.criar_dataframe_guilherme(df)
+    >>> fig = make_plot_guilherme(df_guilherme)
     >>> fig.savefig('graficos/graficoguilherme.png')
     """
 
@@ -111,6 +120,11 @@ def make_gustavo_plot(df):
     -------
     Figure
         Um objeto de figura do Matplotlib contendo o gráfico gerado.
+
+    >>> df = clean_data(collect_data())
+    >>> df_gustavo = gerar_dataframes.criar_dataframe_gustavo(df)
+    >>> fig = make_plot_gustavo(df_gustavo)
+    >>> fig.savefig('graficos/graficogustavo.png')
     """
 
     colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b',
@@ -131,44 +145,8 @@ def make_gustavo_plot(df):
     
     plt.title("Operações policiais por Área de Atuação em 2022")
     plt.legend(title='Area', title_fontsize='14', loc='upper right', bbox_to_anchor=(1.13, 1))
-    # plt.show()
 
     return plot
-
-def graph_currency(value, pos):
-    """
-    Formata valores em milhões para uso em legendas de gráficos.
-
-    Esta função formata o valor para exibir em formato de moeda, indicando milhões
-    se o valor for maior ou igual a 1 milhão.
-
-    Parameters
-    ----------
-    value : int
-        O valor a ser formatado.
-    pos : int
-        Argumento obrigatório da função FuncFormatter.
-
-    Returns
-    -------
-    str
-        A representação formatada do valor em milhões, no formato "$X.XXM" se o valor
-        for maior ou igual a 1 milhão, caso contrário, no formato "$X".
-
-    Example
-    -------
-    Exemplo de uso:
-
-    >>> graph_currency(1500000, 0)
-    '$1.5M'
-
-    >>> graph_currency(50, 0)
-    '$50'
-    """
-    if value >= 1e6: 
-        return f'${value/1e6:.0f}M'  
-    else:
-        return f'${value:.0f}'
 
 def make_plot_joao(df):
     """
@@ -192,7 +170,8 @@ def make_plot_joao(df):
     Exemplo de uso:
 
     >>> df = clean_data(collect_data())
-    >>> fig = make_plot_joao(df)
+    >>> df_joao = gerar_dataframes.criar_dataframe_joao(df)
+    >>> fig = make_plot_joao(df_joao)
     >>> fig.savefig('graficos/graficojoao.png')
     """
 
@@ -232,16 +211,21 @@ def make_plot_joao(df):
     return plot
 
 if __name__ == "__main__":
-    df = clean_data(collect_data())
+    df = collect_data()
+    df = clean_data(df)
 
-    fig_vinicius = make_plot_vinicius(df)
+    df_vinicius = gerar_dataframes.criar_dataframe_vinicius(df)
+    fig_vinicius = make_plot_vinicius(df_vinicius)
     fig_vinicius.savefig('graficos/graficovinicius.png')
 
-    fig_guilherme = make_plot_guilherme(df)
+    df_guilherme = gerar_dataframes.criar_dataframe_guilherme(df)
+    fig_guilherme = make_plot_guilherme(df_guilherme)
     fig_guilherme.savefig('graficos/graficoguilherme.png')
 
-    fig_gustavo = make_gustavo_plot(df)
+    df_gustavo = gerar_dataframes.criar_dataframe_gustavo(df)
+    fig_gustavo = make_gustavo_plot(df_gustavo)
     fig_gustavo.savefig('graficos/graficogustavo.png')
 
-    fig_joao = make_plot_joao(df)
+    df_joao = gerar_dataframes.criar_dataframe_joao(df)
+    fig_joao = make_plot_joao(df_joao)
     fig_joao.savefig('graficos/graficojoao.png')
