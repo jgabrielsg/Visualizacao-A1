@@ -189,9 +189,9 @@ def make_plot_joao(df):
     desvio_padrao = df['Total Valores Apreendidos'].std()
 
     # Exibindo os resultados
-    print(f"Mediana: {mediana}")
-    print(f"Média: {media}")
-    print(f"Desvio Padrão: {desvio_padrao}")
+    # print(f"Mediana: {mediana}")
+    # print(f"Média: {media}")
+    # print(f"Desvio Padrão: {desvio_padrao}")
     
 
     colors = ['green' if i > 21 else 'gray' for i in range(len(df))]

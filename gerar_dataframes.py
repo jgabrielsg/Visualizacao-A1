@@ -1,3 +1,5 @@
+"""Módulo que contém as funções que criam os dataframes que cada aluno usa na criação dos gráficos."""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
