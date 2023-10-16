@@ -33,7 +33,7 @@ class DFTests(unittest.TestCase):
         result_df = filtrar_colunas(df_original,"Nome","Idade")
         self.assertTrue(self.gabarito2.equals(result_df))
 
-    def valores_unicos(self):
+    def test_valores_unicos(self):
         self.gabarito = ['RR', 'MG', 'PI', 'RS', 'PR', 'MS', 'RJ', 'AC', 'AM', 'CE', 'GO', 'SP', 'RO', 'PE', 'BA', 'MT', 'ES', 'PA', 'SE', 'AL', 'SC', 'PB', 'DF', 'RN', 'TO', 'MA', 'AP']
         self.resultado = valores_unicos(collect_data(), "Sigla Unidade Federativa")
         self.assertTrue(self.gabarito.equals(self.resultado))
