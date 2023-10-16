@@ -138,6 +138,7 @@ def contar_repeticoes(df, *colunas):
         repeticoes = df_copia.groupby(list(colunas)).size().reset_index(name = "QUANTIDADE")
         df_copia = df_copia.merge(repeticoes, on = list(colunas), how = "left")
         df_copia = df_copia.drop_duplicates(subset = list(colunas), keep = "first")
+        df_copia = df_copia[list(colunas) + ["QUANTIDADE"]]
         df_copia = df_copia.set_index(list(colunas)).sort_values("QUANTIDADE", ascending=True)
         return df_copia
     
@@ -191,4 +192,4 @@ def criar_df_guilherme(df_original):
 
     df_guilherme = df_copia.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
     
-    return df_guilherme 
+    return df_guilherme
