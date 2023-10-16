@@ -20,10 +20,6 @@ def make_plot_vinicius(df):
     Figure
         Um objeto de figura do Matplotlib contendo o gráfico gerado.
     """
-    # Limpeza pessoal do Dataset
-    df_estados = filtrar_colunas(df, "Sigla Unidade Federativa")
-    df_estados = contar_repeticoes(df_estados, "Sigla Unidade Federativa")
-    df_estados = df_estados.rename_axis(index = "ESTADOS")
 
     # Plotagem do gráfico
     regioes_cores = {"Norte": (["AC", "AM", "AP", "PA", "RO", "RR", "TO"], "green"),
@@ -32,11 +28,11 @@ def make_plot_vinicius(df):
                     "Sudeste": (["ES", "MG", "RJ", "SP"], "yellow"),
                     "Sul": (["PR", "RS", "SC"], (1, 0, 1))}
 
-    barras = plt.barh(df_estados.index, df_estados["QUANTIDADE"], height = 0.5)
-    total_soma = df_estados["QUANTIDADE"].sum()
+    barras = plt.barh(df.index, df["QUANTIDADE"], height = 0.5)
+    total_soma = df["QUANTIDADE"].sum()
 
     for num, barra in enumerate(barras):
-        estado = df_estados.index[num]
+        estado = df.index[num]
         for regiao, (siglas, cor) in regioes_cores.items():
             if estado in siglas:
                 barra.set_color(cor)
@@ -87,19 +83,9 @@ def make_plot_guilherme(df):
     >>> fig = make_plot_guilherme(df)
     >>> fig.savefig('graficos/graficoguilherme.png')
     """
-    #Previne que o df original seja modificado.
-    df_copia = df.copy()
-    df_copia = filtrar_colunas(df_copia, 'Atuacao em Territorio Indigena','Qtd Valores Apreendidos','Sigla Unidade Federativa')
-
-    #Remove os estados sem atuação em território indigena.
-    estados_ap_ind = df_copia[df_copia['Atuacao em Territorio Indigena'] == 'Sim'].groupby('Sigla Unidade Federativa').size().index
-    df_ap_ind = df_copia[df_copia['Sigla Unidade Federativa'].isin(estados_ap_ind)]
-
-    df_agrupado = df_ap_ind.groupby(['Atuacao em Territorio Indigena','Sigla Unidade Federativa'])['Qtd Valores Apreendidos'].mean().reset_index(name="Média")
-    df_pivot = df_agrupado.pivot_table(values='Média',  columns=['Atuacao em Territorio Indigena'], index = 'Sigla Unidade Federativa', fill_value=0)
 
     plt.style.use("Solarize_Light2")
-    df_pivot.plot(kind='bar', edgecolor='white', linewidth=1)
+    df.plot(kind='bar', edgecolor='white', linewidth=1)
     plt.yscale("log")
 
     plt.xlabel('Estado (UF)', fontsize=8)
@@ -127,34 +113,14 @@ def make_gustavo_plot(df):
         Um objeto de figura do Matplotlib contendo o gráfico gerado.
     """
 
-    # Cria uma cópia das colunas necessáras do dataframe
-    df_copia = df.copy()
-    df_copia = filtrar_colunas(df, "Data da Deflagracao", "Area")
-
-    #Deixando mais curtos os títulos para que a legenda seja mais legível
-    df_copia.loc[df_copia["Area"] == "Crimes Ambientais e Contra o Patrimônio Cultural", "Area"] = "Crimes Ambientais"
-    df_copia.loc[df_copia["Area"] == "Crimes de Ódio e Pornografia Infantil", "Area"] = "Crimes de Ódio e Porn. Infantil"
-    
-    #Evita que um aviso do pandas apareca criando um novo df
-    df_copia = df_copia.copy()
-    df_copia["Data de Deflagracao"] = df_copia['Data da Deflagracao'].dt.strftime('%m/%Y')
-
-    # Usado para saber as áreas de atuação das operações mais frequêntes
-    contagem_area = df_copia["Area"].value_counts().index
-
-    # Agrupa por mês e área de atuação as operações
-    grouped = df_copia.groupby(['Area', 'Data de Deflagracao']).size().unstack(fill_value=0)
-
-    grouped = grouped.loc[contagem_area[:10]]
-
     colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b',
               '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2']
 
     plt.style.use("Solarize_Light2")
     plot = plt.figure(figsize=(14, 8))
-    plt.stackplot(grouped.columns, grouped.values, labels=grouped.index, alpha=0.8, colors=colors)
+    plt.stackplot(df.columns, df.values, labels=df.index, alpha=0.8, colors=colors)
     plt.xticks(range(1, 13), rotation=30)
-    plt.xlim(grouped.columns.min(), grouped.columns.max())
+    plt.xlim(df.columns.min(), df.columns.max())
     plt.xlabel('Mês')
 
     plt.ylabel("Quantidade de Operações")
@@ -229,14 +195,11 @@ def make_plot_joao(df):
     >>> fig = make_plot_joao(df)
     >>> fig.savefig('graficos/graficojoao.png')
     """
-    df_estados = df.groupby('Sigla Unidade Federativa')['Qtd Valores Apreendidos'].sum().reset_index()
-    df_estados = df_estados.rename(columns={'Qtd Valores Apreendidos': 'Total Valores Apreendidos'})
-    df_estados = df_estados.sort_values(by='Total Valores Apreendidos', ascending=True)
 
-    colors = ['green' if i > 21 else 'gray' for i in range(len(df_estados))]
+    colors = ['green' if i > 21 else 'gray' for i in range(len(df))]
 
     plot = plt.figure(figsize=(10, 6))
-    plt.bar(df_estados['Sigla Unidade Federativa'], df_estados['Total Valores Apreendidos'], color=colors)
+    plt.bar(df['Sigla Unidade Federativa'], df['Total Valores Apreendidos'], color=colors)
 
     plt.legend(['Valores Apreendidos'], loc='upper left')
 
@@ -244,9 +207,9 @@ def make_plot_joao(df):
 
     plt.text(15, 1000000000, 'Valores > 500M', fontsize=12, color='black', fontweight='bold')
 
-    bars = plt.bar(df_estados['Sigla Unidade Federativa'], df_estados['Total Valores Apreendidos'], color=colors)
+    bars = plt.bar(df['Sigla Unidade Federativa'], df['Total Valores Apreendidos'], color=colors)
 
-    total_sum = df_estados['Total Valores Apreendidos'].sum()
+    total_sum = df['Total Valores Apreendidos'].sum()
 
     for bar in bars:
         height = bar.get_height()
@@ -254,7 +217,7 @@ def make_plot_joao(df):
         plt.text(bar.get_x() + bar.get_width() / 2, height / 2, f'{percentage:.2f}%', ha='center', va='baseline', rotation=90, fontsize=8, fontweight='bold', color='#010101', linespacing=0.9)
 
     plt.axhline(y=1000000, color='r', linestyle='--', label='Limiar de 1 milhão')
-    plt.fill_between(df_estados['Sigla Unidade Federativa'], 0, df_estados['Total Valores Apreendidos'], alpha=0.2)
+    plt.fill_between(df['Sigla Unidade Federativa'], 0, df['Total Valores Apreendidos'], alpha=0.2)
     plt.title('Valores Apreendidos por Estado em 2022')
     plt.grid(axis='y', linestyle='--', alpha=0.6)
     plt.text(0.02, 0.92, 'Dados de 2022', transform=plt.gcf().transFigure)
