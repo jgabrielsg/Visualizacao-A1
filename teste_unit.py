@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 from pandas.testing import assert_frame_equal
-from funcoes import collect_data, filtrar_colunas
+from funcoes import collect_data, filtrar_colunas, valores_unicos
 from datacleaning import arrumar_tipos, clean_data
 
 class DFTests(unittest.TestCase):
@@ -32,6 +32,11 @@ class DFTests(unittest.TestCase):
         df_original = pd.read_csv("testes_dados/filtrar_colunas/dados.csv", encoding='latin1', sep =";")
         result_df = filtrar_colunas(df_original,"Nome","Idade")
         self.assertTrue(self.gabarito2.equals(result_df))
+
+    def valores_unicos(self):
+        self.gabarito = ['RR', 'MG', 'PI', 'RS', 'PR', 'MS', 'RJ', 'AC', 'AM', 'CE', 'GO', 'SP', 'RO', 'PE', 'BA', 'MT', 'ES', 'PA', 'SE', 'AL', 'SC', 'PB', 'DF', 'RN', 'TO', 'MA', 'AP']
+        self.resultado = valores_unicos(collect_data(), "Sigla Unidade Federativa")
+        self.assertTrue(self.gabarito.equals(self.resultado))
 
 if __name__ == '__main__':
     unittest.main()
